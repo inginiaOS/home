@@ -1,3 +1,16 @@
+liff.init({ liffId: "2007908663-NawZjDxL" }).then(() => {
+  document.getElementById("requestQuote").addEventListener("click", () => {
+    const basePlan = "InginiaOS Starter (8,800฿ / เดือน)";
+    const text = "ฉันสนใจ:\n" + basePlan + "\n\nAdd-ons:\n" + 
+      (selectedAddons.length ? selectedAddons.join("\n") : "ไม่มี");
+
+    liff.sendMessages([
+      { type: "text", text: text }
+    ]).then(() => {
+      alert("ส่งข้อความสำเร็จแล้วครับ ✅");
+    });
+  });
+});
 document.querySelectorAll(".tab").forEach(tab => {
   tab.addEventListener("click", () => {
     document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
