@@ -47,19 +47,18 @@ liff.init({ liffId: "2007908663-NawZjDxL" }).then(() => {
   console.error("LIFF init error:", err);
 });
 
-// ปุ่มสมัครแพ็กหลัก
-document.getElementById("subscribeBase").addEventListener("click", () => {
-  const basePlan = "InginiaOS Starter (8,800฿ / เดือน)";
-  const text = "ฉันสนใจแพ็กเกจหลัก:\n" + basePlan;
+document.querySelectorAll(".subscribeBase").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const basePlan = "InginiaOS Starter (8,800฿ / เดือน)";
+    const text = "ฉันสนใจแพ็กเกจหลัก:\n" + basePlan;
 
-  liff.sendMessages([
-    { type: "text", text: text }
-  ])
-  .then(() => {
-    alert("ส่งข้อความสำเร็จ ✅ ทีมงานจะติดต่อกลับ");
-  })
-  .catch(err => {
-    console.error("ส่งข้อความไม่สำเร็จ:", err);
-    alert("เกิดข้อผิดพลาด: " + err.message);
+    liff.sendMessages([{ type: "text", text: text }])
+      .then(() => {
+        alert("ส่งข้อความสำเร็จ ✅ ทีมงานจะติดต่อกลับ");
+      })
+      .catch(err => {
+        console.error("ส่งข้อความไม่สำเร็จ:", err);
+        alert("เกิดข้อผิดพลาด: " + err.message);
+      });
   });
 });
