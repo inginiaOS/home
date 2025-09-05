@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>InginiaOS Landing Page</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body>
   <!-- ===== Navbar ===== -->
@@ -288,5 +289,12 @@
     <!-- โหลด LIFF SDK ก่อน -->
 <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,  // ความเร็วของ animation
+    once: true       // ให้เล่นครั้งเดียว (เลื่อนกลับขึ้นมาไม่เล่นซ้ำ)
+  });
+</script>
 </body>
 </html>
