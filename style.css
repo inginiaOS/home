@@ -216,18 +216,20 @@ footer{padding:20px;text-align:center;border-top:1px solid #111;color:#888}
   cursor: default;
 }
 button.cta-buy {
-  all: unset; /* รีเซ็ต style ปุ่มดิบ */
+  all: unset;
   display: block;
   text-align: center;
   background: linear-gradient(90deg,var(--brand),#00e0ff);
   color: #000;
-  padding: 12px;
+  padding: 10px 20px;
   border-radius: 999px;
   font-weight: 700;
+  font-size: 0.95rem;
   cursor: pointer;
-  width: 100%;
-  max-width: 400px;
-  margin: 20px auto;
+  margin: 16px auto;        /* กึ่งกลางแนวนอน */
+  width: auto;              /* ไม่บังคับเต็มจอ */
+  max-width: 280px;         /* จำกัดขนาดสูงสุด */
+  box-sizing: border-box;   /* กัน padding ดันออก */
 }
 button.cta-buy:hover {
   opacity: .9;
