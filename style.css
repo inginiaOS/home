@@ -234,3 +234,110 @@ button.cta-buy {
 button.cta-buy:hover {
   opacity: .9;
 }
+
+/* ===== Comparison Section ===== */
+#comparison {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#comparison h2 {
+  margin-bottom: 16px;
+}
+
+#comparison p {
+  margin-bottom: 24px;
+  font-size: 1.1rem;
+  color: #bbb;
+}
+
+/* Toggle Button */
+#toggleComparison {
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brand, #00ff88), #00e0ff);
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+}
+#toggleComparison:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Table Base */
+#comparisonTable table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #0d0d0d;
+  color: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,.45);
+  margin-top: 20px;
+}
+
+#comparisonTable th,
+#comparisonTable td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #222;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Table Header */
+#comparisonTable thead tr {
+  background: linear-gradient(90deg, #00ff88, #00e0ff);
+  color: #000;
+}
+#comparisonTable th {
+  font-weight: 800;
+  text-align: center;
+}
+#comparisonTable th:first-child {
+  text-align: left;
+}
+
+/* Table Highlight (InginiaOS Column) */
+#comparisonTable td:nth-child(3) {
+  background: rgba(0, 255, 136, 0.08);
+  color: #00ff88;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Agency Column */
+#comparisonTable td:nth-child(2) {
+  text-align: center;
+  color: #ccc;
+}
+
+/* First Column (Dimensions) */
+#comparisonTable td:first-child {
+  font-weight: 600;
+  color: #fff;
+  text-align: left;
+}
+
+/* Remove last row border */
+#comparisonTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #comparisonTable table {
+    font-size: 0.85rem;
+  }
+  #toggleComparison {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 12px 20px;
+  }
+}
