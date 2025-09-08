@@ -628,150 +628,6 @@ button.cta-buy:hover {
   box-shadow: 0 6px 18px rgba(0, 255, 136, 0.5);
 }
 
-/* ===== FAQ Section ===== */
-#faq {
-  padding: 80px 0;             /* เอา padding ซ้าย/ขวาออก */
-  width: 100% !important;      /* กินเต็มจอ */
-  max-width: 100% !important;
-  margin: 0;                   /* ไม่ให้อยู่กึ่งกลาง */
-  text-align: center;
-}
-
-#faq h2,
-#faq p {
-  text-align: center;           /* ✅ หัวข้อและข้อความกึ่งกลาง */
-  width: 100%;                  /* ✅ เต็มพื้นที่ */
-}
-
-.faq-container {
-  width: 100% !important;      /* กล่องคำถามเต็มจอ */
-  margin: 0;
-  padding: 0 10px;             /* padding เบา ๆ เพื่อไม่ชิดขอบมือถือเกินไป */
-}
-
-
-.faq-item {
-  border-bottom: 1px solid #222;
-}
-
-.faq-question {
-  width: 100%;
-  background: none;
-  border: none;
-  text-align: center;           /* ✅ ปุ่มคำถามกึ่งกลาง */
-  padding: 18px 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-  position: relative;
-  transition: color 0.25s ease;
-}
-
-.faq-question:hover {
-  color: var(--brand);
-}
-
-.faq-question::after {
-  content: "+";
-  position: absolute;
-  right: 12px;
-  font-size: 1.3rem;
-  transition: transform 0.25s ease;
-}
-
-.faq-item.active .faq-question::after {
-  content: "-";
-  transform: rotate(180deg);
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  color: #bbb;
-  font-size: 1rem;
-  line-height: 1.6;
-  padding: 0 12px;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  text-align: center;           /* ✅ คำตอบกึ่งกลาง */
-  width: 100%;                  /* ✅ เต็มพื้นที่ */
-}
-
-.faq-item.active .faq-answer {
-  max-height: 1000px;
-  padding: 12px;
-}
-
-
-/* ===== Lite vs Starter Section ===== */
-/* ===== Lite vs Starter Section ===== */
-#compare-lite-starter {
-  padding: 80px 0;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0;
-  text-align: center;
-}
-#compare-lite-starter .compare-table {
-  width: 100% !important;      /* ตารางเต็มพื้นที่ */
-  table-layout: fixed;         /* คอลัมน์ขยายเท่ากัน */
-  margin: 0;
-  border-spacing: 0;
-}
-#compare-lite-starter h2,
-#compare-lite-starter p {
-  text-align: center;           /* ✅ หัวข้อและข้อความกึ่งกลาง */
-  width: 100%;                  /* ✅ เต็มพื้นที่ */
-}
-
-.compare-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #0d0d0d;
-  color: #fff;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,.45);
-  margin: 0;               /* ✅ ตารางกึ่งกลาง */
-}
-
-.compare-table th,
-.compare-table td {
-  padding: 14px 16px;
-  border-bottom: 1px solid #222;
-  font-size: 0.95rem;
-  text-align: center !important;  /* ✅ ทุกช่องอยู่กลาง */
-}
-
-.compare-table th {
-  background: linear-gradient(90deg, #00ff88, #00e0ff);
-  color: #000;
-  font-weight: 800;
-}
-
-.compare-table td:first-child {
-  text-align: center;           /* ✅ หัวข้อฝั่งซ้ายก็กึ่งกลาง */
-  font-weight: 600;
-  color: #fff;
-}
-
-.compare-table td:nth-child(2) {
-  color: #aaa;
-}
-
-.compare-table td:nth-child(3) {
-  background: rgba(0, 255, 136, 0.08);
-  color: #00ff88;
-  font-weight: 600;
-}
-
-/* Lite vs Starter Highlight */
-.compare-table .lite-col {
-  background: rgba(255, 255, 255, 0.02);
-  color: #bbb;
-  font-weight: 500;
-}
-
 
 footer {
   padding: 28px 20px;
@@ -821,117 +677,100 @@ footer .trust-logos.darkmode .etc-tag:hover {
   background: rgba(0,255,136,0.15);
 }
 
-/* ===== Force Center FAQ ===== */
+/* ===== FAQ Section (Full Width) ===== */
+#faq {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 80px 0;
+  text-align: center;
+}
+
+#faq h2,
+#faq p {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+#faq .faq-container {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 10px;   /* กันชิดขอบมือถือเกินไป */
+}
+
 .faq-question {
-  text-align: center !important;   /* 🔥 คำถามกลาง */
+  width: 100% !important;
+  text-align: center !important;
+  padding: 18px 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
 }
 
 .faq-answer {
-  text-align: center !important;   /* 🔥 คำตอบกลาง */
-  width: 100% !important;          /* เต็มพื้นที่ */
-}
-
-/* ===== Force Center Lite vs Starter Table ===== */
-.compare-table td,
-.compare-table th {
-  text-align: center !important;   /* 🔥 ทุกช่องกลาง */
-}
-
-.compare-table td:first-child {
-  text-align: center !important;   /* 🔥 หัวข้อคอลัมน์ซ้ายกลาง */
-}
-/* ===== Fix Full Width FAQ + Comparison ===== */
-#faq, 
-#compare-lite-starter {
-  max-width: 100% !important;
   width: 100% !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-#faq .faq-question,
-#faq .faq-answer {
   text-align: center !important;
-  width: 100% !important;
+  color: #bbb;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease, padding 0.4s ease;
 }
 
-.compare-table {
+.faq-item.active .faq-answer {
+  max-height: 1000px;
+  padding: 12px;
+}
+
+/* ===== Lite vs Starter Section (Full Width) ===== */
+#compare-lite-starter {
   width: 100% !important;
-  margin: 0 auto;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 80px 0;
+  text-align: center;
+}
+
+#compare-lite-starter h2,
+#compare-lite-starter p {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+#compare-lite-starter .compare-table {
+  width: 100% !important;
+  margin: 0 !important;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background: #0d0d0d;
+  color: #fff;
 }
 
 .compare-table th,
 .compare-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #222;
   text-align: center !important;
+  font-size: 0.95rem;
 }
 
-/* ===== Fix Compare Lite vs Starter Alignment ===== */
-#compare-lite-starter {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+.compare-table th {
+  background: linear-gradient(90deg, #00ff88, #00e0ff);
+  color: #000;
+  font-weight: 800;
 }
 
-#compare-lite-starter .compare-table {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;   /* บังคับเต็มจอ */
-  table-layout: fixed;      /* คอลัมน์สมดุล */
+.compare-table td:nth-child(2) {
+  color: #aaa;
 }
 
-/* ===== Fix FAQ Alignment ===== */
-#faq {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-#faq .faq-container {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100% !important;
-}
-/* ===== Force Full Width for FAQ ===== */
-#faq {
-  max-width: 100% !important;   /* ลบข้อจำกัดความกว้าง */
-  width: 100% !important;
-  margin: 0 !important;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-/* ===== Force Full Width for Lite vs Starter ===== */
-#compare-lite-starter {
-  max-width: 100% !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-#compare-lite-starter .compare-table {
-  width: 100% !important;       /* บังคับตารางเต็มพื้นที่ */
-  table-layout: fixed;          /* แบ่งคอลัมน์แบบเท่ากัน */
-}
-/* ===== Force Fix Full Width ===== */
-#compare-lite-starter,
-#faq {
-  max-width: 100% !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* ✅ ล้างกฎ section (1100px) สำหรับ 2 อันนี้ */
-#compare-lite-starter section,
-#faq section {
-  max-width: 100% !important;
-  margin: 0 !important;
-}
-
-/* ✅ ตารางต้องเต็มจริงแบบไม่มี auto margin */
-#compare-lite-starter .compare-table {
-  width: 100% !important;
-  margin: 0 !important;
-  border-radius: 0 !important;   /* ลองตัดมุมโค้งออกถ้าอยากเต็มเป๊ะ */
-  box-shadow: none !important;   /* ลบเงาออกถ้าไม่อยากให้ดูเหมือน shrink */
+.compare-table td:nth-child(3) {
+  background: rgba(0, 255, 136, 0.08);
+  color: #00ff88;
+  font-weight: 600;
 }
