@@ -853,3 +853,28 @@ footer .trust-logos.darkmode .etc-tag:hover {
 .compare-table td {
   text-align: center !important;
 }
+
+/* ===== Fix Compare Lite vs Starter Alignment ===== */
+#compare-lite-starter {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#compare-lite-starter .compare-table {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;   /* บังคับเต็มจอ */
+  table-layout: fixed;      /* คอลัมน์สมดุล */
+}
+
+/* ===== Fix FAQ Alignment ===== */
+#faq {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#faq .faq-container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+}
