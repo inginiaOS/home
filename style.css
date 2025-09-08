@@ -1018,3 +1018,21 @@ body #faq .faq-answer {
   padding-right: 0 !important;
   text-align: left !important;   /* ✅ ถ้าอยากให้อ่านง่าย */
 }
+/* ===== FORCE CLOSING FULL WIDTH ===== */
+body section#closing {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* กล่องไฮไลต์ให้ไม่แคบเกินไปบนมือถือ */
+body section#closing .highlight-box {
+  max-width: 100% !important;
+  width: auto !important;
+  margin-left: 12px !important;   /* กันชิดขอบเกินไป */
+  margin-right: 12px !important;
+}
+body section#closing p { font-size: clamp(1rem, 2.6vw, 1.4rem); }
