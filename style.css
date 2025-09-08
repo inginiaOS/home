@@ -630,10 +630,11 @@ button.cta-buy:hover {
 
 /* ===== FAQ Section ===== */
 #faq {
-  padding: 80px 20px;
-  max-width: 100% !important;   /* ✅ เต็มจอ */
-  margin: 0 auto;
-  text-align: center;           /* ✅ กึ่งกลางทั้งหมด */
+  padding: 80px 0;             /* เอา padding ซ้าย/ขวาออก */
+  width: 100% !important;      /* กินเต็มจอ */
+  max-width: 100% !important;
+  margin: 0;                   /* ไม่ให้อยู่กึ่งกลาง */
+  text-align: center;
 }
 
 #faq h2,
@@ -643,8 +644,11 @@ button.cta-buy:hover {
 }
 
 .faq-container {
-  margin-top: 30px;
+  width: 100% !important;      /* กล่องคำถามเต็มจอ */
+  margin: 0;
+  padding: 0 10px;             /* padding เบา ๆ เพื่อไม่ชิดขอบมือถือเกินไป */
 }
+
 
 .faq-item {
   border-bottom: 1px solid #222;
@@ -700,13 +704,20 @@ button.cta-buy:hover {
 
 
 /* ===== Lite vs Starter Section ===== */
+/* ===== Lite vs Starter Section ===== */
 #compare-lite-starter {
-  padding: 80px 20px;
-  max-width: 100% !important;   /* ✅ เต็มจอ */
-  margin: 0 auto;
-  text-align: center;           /* ✅ กึ่งกลางทั้งหมด */
+  padding: 80px 0;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0;
+  text-align: center;
 }
-
+#compare-lite-starter .compare-table {
+  width: 100% !important;      /* ตารางเต็มพื้นที่ */
+  table-layout: fixed;         /* คอลัมน์ขยายเท่ากัน */
+  margin: 0;
+  border-spacing: 0;
+}
 #compare-lite-starter h2,
 #compare-lite-starter p {
   text-align: center;           /* ✅ หัวข้อและข้อความกึ่งกลาง */
@@ -721,7 +732,7 @@ button.cta-buy:hover {
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0,0,0,.45);
-  margin: 0 auto;               /* ✅ ตารางกึ่งกลาง */
+  margin: 0;               /* ✅ ตารางกึ่งกลาง */
 }
 
 .compare-table th,
