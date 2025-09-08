@@ -911,3 +911,27 @@ footer .trust-logos.darkmode .etc-tag:hover {
   width: 100% !important;       /* บังคับตารางเต็มพื้นที่ */
   table-layout: fixed;          /* แบ่งคอลัมน์แบบเท่ากัน */
 }
+/* ===== Force Fix Full Width ===== */
+#compare-lite-starter,
+#faq {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* ✅ ล้างกฎ section (1100px) สำหรับ 2 อันนี้ */
+#compare-lite-starter section,
+#faq section {
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+/* ✅ ตารางต้องเต็มจริงแบบไม่มี auto margin */
+#compare-lite-starter .compare-table {
+  width: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;   /* ลองตัดมุมโค้งออกถ้าอยากเต็มเป๊ะ */
+  box-shadow: none !important;   /* ลบเงาออกถ้าไม่อยากให้ดูเหมือน shrink */
+}
