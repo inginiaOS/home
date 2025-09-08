@@ -88,10 +88,24 @@ document.getElementById("exclusiveBtn").addEventListener("click", () => {
     });
 });
 
-// FAQ Toggle
+// FAQ Toggle (แก้ใหม่)
 document.querySelectorAll(".faq-question").forEach(btn => {
   btn.addEventListener("click", () => {
-    const item = btn.parentElement;
+    const item = btn.parentElement; // parent = .faq-item
     item.classList.toggle("active");
   });
+});
+
+// Toggle Lite vs Starter Table (แก้ไขแล้ว)
+document.getElementById("toggleLiteStarter").addEventListener("click", function() {
+  const table = document.getElementById("liteStarterTable");
+  const isHidden = window.getComputedStyle(table).display === "none";
+
+  if (isHidden) {
+    table.style.display = "block";
+    this.textContent = "ซ่อนตารางเปรียบเทียบ";
+  } else {
+    table.style.display = "none";
+    this.textContent = "ดูตารางเปรียบเทียบ";
+  }
 });
