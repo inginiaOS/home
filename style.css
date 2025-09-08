@@ -810,3 +810,23 @@ footer .trust-logos.darkmode .etc-tag:hover {
   background: rgba(0,255,136,0.15);
 }
 
+/* ===== Force Center FAQ ===== */
+.faq-question {
+  text-align: center !important;   /* 🔥 คำถามกลาง */
+}
+
+.faq-answer {
+  text-align: center !important;   /* 🔥 คำตอบกลาง */
+  width: 100% !important;          /* เต็มพื้นที่ */
+}
+
+/* ===== Force Center Lite vs Starter Table ===== */
+.compare-table td,
+.compare-table th {
+  text-align: center !important;   /* 🔥 ทุกช่องกลาง */
+}
+
+.compare-table td:first-child {
+  text-align: center !important;   /* 🔥 หัวข้อคอลัมน์ซ้ายกลาง */
+}
+
