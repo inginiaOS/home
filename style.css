@@ -911,3 +911,41 @@ footer .trust-logos.darkmode .etc-tag:hover {
   width: 100% !important;       /* บังคับตารางเต็มพื้นที่ */
   table-layout: fixed;          /* แบ่งคอลัมน์แบบเท่ากัน */
 }
+/* ===== Force Full Width for FAQ + Lite vs Starter ===== */
+#faq,
+#compare-lite-starter {
+  max-width: 100% !important;   /* ลบข้อจำกัด 1100px */
+  width: 100% !important;
+  margin: 0 !important;         /* เอา auto margin ออก */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: center;
+}
+
+/* ===== FAQ Container ===== */
+#faq .faq-container {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 16px;   /* กันไม่ให้ติดขอบมือถือ */
+}
+
+/* ===== FAQ Content ===== */
+#faq .faq-question,
+#faq .faq-answer {
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/* ===== Lite vs Starter Table ===== */
+#compare-lite-starter .compare-table {
+  width: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;   /* เต็มจอจริง ไม่มีโค้ง */
+  box-shadow: none !important;   /* กันไม่ให้เหมือนหด */
+  table-layout: fixed;           /* คอลัมน์สมดุล */
+}
+
+#compare-lite-starter .compare-table th,
+#compare-lite-starter .compare-table td {
+  text-align: center !important;
+}
