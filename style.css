@@ -39,11 +39,82 @@ footer{padding:20px;text-align:center;border-top:1px solid #111;color:#888}
 #pricing .tab.active{color:#fff;border-bottom:3px solid var(--brand)}
 .tab-content{display:none}
 .tab-content.active{display:block}
-.pricing-card{background:#111;border-radius:14px;padding:30px;margin:20px auto;max-width:400px;text-align:center}
-.pricing-card h3{font-size:1.3rem;margin-bottom:8px}
-.pricing-card .price{font-size:1.8rem;font-weight:700;background:linear-gradient(90deg,#fff,var(--aqua),var(--brand));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:10px 0 20px}
-.pricing-card.highlight{background:linear-gradient(180deg,#0f0f0f,#0a0a0a);border:1px solid var(--brand)}
-.pricing-card.outline{border:1px solid #333;background:#000}
+.pricing-card-modern {
+  background: radial-gradient(circle at top left, rgba(0, 200, 255, 0.12), rgba(0, 0, 0, 0.95));
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  color: #fff;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.pricing-card-modern .plan-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #ccc;
+}
+
+.pricing-card-modern .plan-price {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #fff, #a0f0ff, #00ffcc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 24px;
+}
+
+.pricing-card-modern .plan-price .per {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #aaa;
+}
+
+.pricing-card-modern .features-list {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.pricing-card-modern .feature-item {
+  margin-bottom: 18px;
+}
+
+.pricing-card-modern .feature-item h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.pricing-card-modern .feature-item p {
+  font-size: 0.9rem;
+  color: #bbb;
+  line-height: 1.5;
+}
+
+.plan-cta {
+  margin-top: 20px;
+  background: linear-gradient(90deg, #00ff88, #00e0ff);
+  color: #000;
+  font-weight: 700;
+  padding: 14px 0;
+  border-radius: 12px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.plan-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 255, 136, 0.6);
+}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
 .cta-buy{display:block;background:linear-gradient(90deg,var(--brand),#00e0ff);color:#000;padding:12px;border-radius:999px;font-weight:700;text-decoration:none}
 .cta-buy:hover{opacity:.9}
@@ -341,7 +412,6 @@ button.cta-buy:hover {
     padding: 12px 20px;
   }
 }
-
 /* ===== Section Closing (Apple Style) ===== */
 #closing {
   padding: 80px 20px;
@@ -418,4 +488,248 @@ button.cta-buy:hover {
 
 .card-highlight h3 {
   color: var(--brand);
+}
+
+/* ===== Founding 10 Section ===== */
+.founding10 {
+  background: linear-gradient(135deg, #000, #0a0a0a);
+  border: 1px solid var(--brand);
+  border-radius: 14px;
+  padding: 40px 30px;
+  margin: 50px auto;
+  max-width: 750px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+  animation: glowPulse 3s infinite;
+}
+
+.founding10 h2 {
+  margin-bottom: 20px;
+}
+
+.founding10 p {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin: 12px 0 20px;
+  line-height: 1.7;
+}
+
+.founding10 ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  text-align: left;
+  max-width: 500px;
+  color: #bbb;
+}
+
+.founding10 ul li {
+  margin: 8px 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.founding10 .badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffd700, #ffa500);
+  color: #000;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 0 rgba(0,255,136,0.3); }
+  50% { box-shadow: 0 0 30px rgba(0,255,136,0.7); }
+  100% { box-shadow: 0 0 0 rgba(0,255,136,0.3); }
+}
+
+/* Exclusive Box Style */
+.exclusive-box {
+  display: none; /* ซ่อนตั้งแต่แรก */
+  margin-top: 20px;
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid var(--brand);
+  border-radius: 14px;
+  padding: 22px;
+  text-align: left;
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.3);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* เวลาเปิด */
+.exclusive-box.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Heading */
+.exclusive-box h3 {
+  color: var(--brand);
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* List */
+.exclusive-box ul {
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.7;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.exclusive-box li {
+  margin-bottom: 8px;
+}
+/* Glow Pulse Effect */
+.exclusive-box.show {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 15px rgba(0, 255, 136, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.7); }
+  100% { box-shadow: 0 0 15px rgba(0, 255, 136, 0.3); }
+}
+/* ปุ่ม Founding10 */
+.cta-exclusive {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(90deg, var(--brand), #00e0ff);
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px; /* เหลี่ยมแต่โค้งมนเล็กน้อย */
+  cursor: pointer;
+  margin-top: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.cta-exclusive:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 255, 136, 0.5);
+}
+
+/* ===== FAQ Section ===== */
+#faq {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.faq-container {
+  margin-top: 30px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #222;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 18px 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.faq-question:hover {
+  color: var(--brand);
+}
+
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 12px;
+  font-size: 1.3rem;
+  transition: transform 0.25s ease;
+}
+
+.faq-item.active .faq-question::after {
+  content: "-";
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  color: #bbb;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 0 12px;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 400px;
+  padding: 12px;
+}
+
+footer {
+  padding: 28px 20px;
+  text-align: center;
+  border-top: 1px solid #111;
+  color: #888;
+  background: #000; /* ให้ footer กลืนกับธีม */
+}
+
+footer .trust-logos.darkmode {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+footer .trust-logos.darkmode img {
+  height: 34px;
+  opacity: 0.65;
+  filter: grayscale(1) brightness(0.85);
+  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+footer .trust-logos.darkmode img:hover {
+  opacity: 1;
+  filter: brightness(1.1) drop-shadow(0 0 6px rgba(0, 255, 136, 0.6));
+  transform: scale(1.08);
+}
+
+footer .trust-logos.darkmode .etc-tag {
+  color: #555;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  background: rgba(0,255,136,0.08);
+  border: 1px solid rgba(0,255,136,0.4);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+footer .trust-logos.darkmode .etc-tag:hover {
+  color: #00ff88;
+  border-color: #00ff88;
+  background: rgba(0,255,136,0.15);
 }
