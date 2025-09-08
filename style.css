@@ -86,7 +86,7 @@ h2.h2-grad {
 }
 
 section {
-  padding: 20px 20px;
+  padding: 10px 20px;
   max-width: 1100px;
   margin: auto;
   text-align: center;
@@ -127,7 +127,7 @@ ul li {
 .divider {
   height: 1px;
   max-width: 1100px;
-  margin: 40px auto;
+  margin: 20px auto;
   background: linear-gradient(
     90deg,
     transparent,
