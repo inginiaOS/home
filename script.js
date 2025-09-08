@@ -62,3 +62,36 @@ document.querySelectorAll(".subscribeBase").forEach(btn => {
       });
   });
 });
+// Exclusive Toggle
+document.getElementById("toggleExclusive").addEventListener("click", function() {
+  const box = document.getElementById("exclusiveBox");
+  box.classList.toggle("show");
+
+  if (box.classList.contains("show")) {
+    this.textContent = "ซ่อนสิทธิ์พิเศษ";
+  } else {
+    this.textContent = "ดูสิทธิ์พิเศษ";
+  }
+});
+
+// ปุ่ม Founding10
+document.getElementById("exclusiveBtn").addEventListener("click", () => {
+  const text = "รับสิทธิ์ Founding 10";
+
+  liff.sendMessages([{ type: "text", text: text }])
+    .then(() => {
+      alert("ส่งข้อความสำเร็จ ✅ ทีมงานจะติดต่อกลับ");
+    })
+    .catch(err => {
+      console.error("ส่งข้อความไม่สำเร็จ:", err);
+      alert("เกิดข้อผิดพลาด: " + err.message);
+    });
+});
+
+// FAQ Toggle
+document.querySelectorAll(".faq-question").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const item = btn.parentElement;
+    item.classList.toggle("active");
+  });
+});
