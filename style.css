@@ -996,3 +996,25 @@ footer .trust-logos.darkmode .etc-tag:hover {
   max-width: 100% !important;
   width: 100% !important;
 }
+/* ===== FORCE FAQ FULL WIDTH ===== */
+body #faq,
+body section#faq,
+body section.faq,
+body #faq .faq-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* FAQ items ให้เต็มด้วย */
+body #faq .faq-question,
+body #faq .faq-answer {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: left !important;   /* ✅ ถ้าอยากให้อ่านง่าย */
+}
