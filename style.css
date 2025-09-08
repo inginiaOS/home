@@ -878,3 +878,25 @@ footer .trust-logos.darkmode .etc-tag:hover {
   margin-right: auto !important;
   width: 100% !important;
 }
+/* ===== Force Full Width for FAQ ===== */
+#faq {
+  max-width: 100% !important;   /* ลบข้อจำกัดความกว้าง */
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* ===== Force Full Width for Lite vs Starter ===== */
+#compare-lite-starter {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#compare-lite-starter .compare-table {
+  width: 100% !important;       /* บังคับตารางเต็มพื้นที่ */
+  table-layout: fixed;          /* แบ่งคอลัมน์แบบเท่ากัน */
+}
