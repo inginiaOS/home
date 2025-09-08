@@ -665,10 +665,10 @@ button.cta-buy:hover {
   background: linear-gradient(135deg,#000,#0a0a0a);
   border: 1px solid var(--brand);
   border-radius: 14px;
-  padding: 40px 30px;
+  max-width: 100% !important;   /* ✅ เต็มจอ */
   margin: 50px auto;
-  max-width: 750px;
   text-align: center;
+  padding: 40px 20px;  
   box-shadow: 0 0 25px rgba(0,255,136,0.4);
   animation: glowPulse 3s infinite;
 }
@@ -973,4 +973,26 @@ footer .trust-logos.darkmode .etc-tag:hover {
   text-align: left !important;    /* คำถาม/คำตอบชิดซ้าย */
   max-width: 800px;               /* จำกัดความกว้างให้อ่านง่าย */
   margin: 0 auto;                 /* จัดให้อยู่ตรงกลางของจอ */
+}
+/* Force Full Width FAQ */
+#faq {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#faq .faq-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#faq .faq-question,
+#faq .faq-answer {
+  max-width: 100% !important;
+  width: 100% !important;
 }
