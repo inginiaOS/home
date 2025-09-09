@@ -1511,3 +1511,25 @@ footer .trust-logos.darkmode button {
   white-space: normal !important;
   text-align: left;
 }
+/* === FORCE SCROLL FOR COMPARISON TABLE === */
+#comparisonTable {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  width: 100% !important;
+}
+
+#comparisonTable .table-wrapper {
+  width: 100% !important;
+  overflow-x: auto !important;
+}
+
+#comparisonTable table {
+  width: max-content !important;   /* ให้กว้างตามเนื้อจริง ไม่ยืดเต็ม 100% */
+  min-width: 980px !important;     /* กันบีบจนอ่านไม่ออก */
+  border-collapse: collapse;
+}
+
+#comparisonTable th,
+#comparisonTable td {
+  white-space: nowrap !important;  /* กันขึ้นบรรทัดใหม่ */
+}
