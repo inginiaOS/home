@@ -109,3 +109,33 @@ document.getElementById("toggleLiteStarter").addEventListener("click", function(
     this.textContent = "ดูตารางเปรียบเทียบ";
   }
 });
+// Toggle Comparison Table
+document.getElementById("toggleComparison").addEventListener("click", function() {
+  const table = document.getElementById("comparisonTable");
+  if (table.style.display === "none") {
+    table.style.display = "block";
+    this.textContent = "ซ่อนตารางเปรียบเทียบ";
+  } else {
+    table.style.display = "none";
+    this.textContent = "ดูตารางเปรียบเทียบ";
+  }
+});
+
+const stageBlocks = document.querySelectorAll('.stage-block');
+const stagePanels = document.querySelectorAll('.stage-panel');
+
+stageBlocks.forEach(block => {
+  block.addEventListener('click', () => {
+    // Reset highlight
+    stageBlocks.forEach(b => b.classList.remove('active'));
+    stagePanels.forEach(p => p.style.display = 'none');
+
+    block.classList.add('active');
+    const target = block.getAttribute('data-stage');
+    document.getElementById(target).style.display = 'block';
+  });
+});
+
+// ค่าเริ่มต้น: Stage 3 (ใหญ่สุด)
+document.querySelector('[data-stage="stage3"]').classList.add('active');
+document.getElementById('stage3').style.display = 'block';
