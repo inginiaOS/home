@@ -1536,3 +1536,14 @@ footer .trust-logos.darkmode button {
 #comparison {
   display: none !important;
 }
+/* Lock gesture: อนุญาตเฉพาะการเลื่อนแนวตั้งทั้งหน้า */
+html, body {
+  touch-action: pan-y;         /* กันปัดเฉียง/ปัดซ้าย-ขวาในระดับ viewport */
+}
+
+/* คืนสิทธิ์ให้คอนเทนเนอร์ที่ต้องเลื่อนแนวนอน */
+#comparisonTable,
+#intro-cards .cards-container {
+  touch-action: pan-x pan-y;   /* หรือ auto; ก็ได้ */
+  -webkit-overflow-scrolling: touch;
+}
