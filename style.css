@@ -1036,3 +1036,451 @@ body section#closing .highlight-box {
   margin-right: 12px !important;
 }
 body section#closing p { font-size: clamp(1rem, 2.6vw, 1.4rem); }
+/* ===== Proof Cases Section ===== */
+#proof-cases {
+  padding: 80px 20px;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+#proof-cases h2 {
+  margin-bottom: 50px;
+}
+
+.proof-card {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 36px 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.proof-card:not(:last-child) {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.proof-sub {
+  font-size: 1rem;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+.proof-number {
+  font-size: 2.8rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #fff, var(--aqua), var(--brand));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 6px 0 14px;
+}
+
+.proof-detail {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+/* ===== Pain Points Section (Apple-like Responsive) ===== */
+#pain-points {
+  padding: clamp(48px,6vw,96px) 20px;
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pain-points h2 {
+  margin: 0 0 40px;
+  font-size: clamp(32px,5vw,54px);   /* ใหญ่ขึ้น */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: #fff;
+}
+
+/* Pain Card Layout */
+.pain-card {
+  display: grid;
+  grid-template-columns: 64px 1fr;   /* ไอคอนใหญ่ขึ้น */
+  gap: 20px;
+  align-items: start;
+  padding: 32px 0;
+  border-top: 0.5px solid rgba(255,255,255,0.12);
+}
+
+.pain-card:not(:last-child) {
+  border-bottom: 0.5px solid rgba(255,255,255,0.12);
+}
+
+/* Pain Icon */
+.pain-icon {
+  width: 64px; height: 64px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.pain-icon img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+/* Gradient Heading */
+.pain-card h3.gradient-text {
+  margin: 4px 0 10px;
+  font-size: clamp(22px,2.5vw,26px); /* ใหญ่ขึ้น */
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  background: linear-gradient(90deg, #ffffff, #a0f0ff, #00ff88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Description Text */
+.pain-card p {
+  margin: 0;
+  font-size: clamp(16px,2.1vw,19px); /* ใหญ่ขึ้น */
+  line-height: 1.7;
+  color: #d0d0d0;
+  letter-spacing: 0.01em;
+}
+
+/* Responsive: Mobile < 600px = Stack Layout */
+@media (max-width: 600px) {
+  .pain-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    text-align: left;
+  }
+  .pain-icon {
+    margin-bottom: 8px;
+    width: 52px; height: 52px;
+  }
+  .pain-icon img {
+    width: 28px; height: 28px;
+  }
+}
+/* ===== Comparison Table Extended ===== */
+#comparisonTable {
+  width: 100%;
+  overflow-x: auto;               /* ✅ เลื่อนซ้าย-ขวา */
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  padding-bottom: 26px;           /* ✅ กันพื้นที่สำหรับ indicator */
+}
+
+#comparisonTable .table-wrapper {
+  position: relative;
+}
+
+#comparisonTable table {
+  min-width: 900px;               /* ✅ กันไม่ให้บีบ */
+  border-collapse: collapse;
+  background: #0d0d0d;
+  color: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,.45);
+}
+
+#comparisonTable th,
+#comparisonTable td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #222;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+#comparisonTable th {
+  background: linear-gradient(90deg, #00ff88, #00e0ff);
+  color: #000;
+  font-weight: 800;
+}
+
+#comparisonTable td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: #fff;
+}
+
+#comparisonTable td.highlight {
+  background: rgba(0, 255, 136, 0.08);
+  color: #00ff88;
+  font-weight: 600;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 60px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.scroll-indicator::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 30%;
+  background: var(--brand, #00ff88);
+  border-radius: 2px;
+  animation: scrollMove 1.6s infinite ease-in-out;
+}
+
+@keyframes scrollMove {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(200%); }
+  100% { transform: translateX(0); }
+}
+
+/* Mobile font adjust */
+@media (max-width: 768px) {
+  #comparisonTable table {
+    font-size: 0.85rem;
+  }
+}
+/* === FIX: ทำให้ทั้งตารางเป็นสีพื้น และให้เขียวเฉพาะคอลัมน์ InginiaOS (คอลัมน์ที่ 5) === */
+
+/* 1) รีเซ็ต header ทุกช่องให้เป็นสีพื้น (เลิกใช้ไล่เฉด) */
+#comparisonTable th {
+  background: #121212 !important;   /* สีพื้นเข้มอ่านง่าย */
+  color: #eaeaea !important;
+}
+
+/* 2) รีเซ็ตทุกเซลล์ให้เป็นสีพื้น */
+#comparisonTable td {
+  background: #101010 !important;
+  color: #ffffff;
+}
+
+/* 3) ให้คอลัมน์ InginiaOS เป็นสีตามเดิมเท่านั้น (สมมติเป็นคอลัมน์ที่ 5) */
+/*    — header ของคอลัมน์ InginiaOS */
+#comparisonTable th:nth-child(5) {
+  background: linear-gradient(90deg, #00ff88, #00e0ff) !important;
+  color: #000 !important;
+  font-weight: 800;
+}
+
+/*    — ทุกแถวของคอลัมน์ InginiaOS */
+#comparisonTable td:nth-child(5) {
+  background: linear-gradient(90deg, #00ff88, #00e0ff);
+  color: #000;
+  font-weight: 800;
+}
+
+/* 4) ปิดผลกระทบจาก .highlight เดิม ที่อาจไปติดคอลัมน์อื่น */
+#comparisonTable td.highlight {
+  background: inherit !important;   /* ให้ค่า default ของคอลัมน์ทำงาน */
+  color: inherit !important;
+}
+
+/* 5) ปรับคอลัมน์หัวข้อ (คอลัมน์แรก) ให้ยังอ่านง่าย */
+#comparisonTable td:first-child {
+  background: #101010 !important;
+  text-align: left;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* 6) เส้นคั่นให้คงที่ */
+#comparisonTable th,
+#comparisonTable td {
+  border-bottom: 1px solid #222;
+}
+/* === FIX 1: คอลัมน์ "โค้ช/คอร์ส" (คอลัมน์ที่ 3) ให้ตัวอักษรเป็นสีขาว === */
+#comparisonTable th:nth-child(3),
+#comparisonTable td:nth-child(3) {
+  color: #ffffff !important;   /* ตัวอักษรขาวเหมือนคอลัมน์ทั่วไป */
+}
+
+/* === FIX 2: คอลัมน์ InginiaOS (คอลัมน์ที่ 5) ให้เป็นพื้นหลังนีออนโดดเด่น === */
+#comparisonTable th:nth-child(5),
+#comparisonTable td:nth-child(5) {
+  background: linear-gradient(135deg, #00ff88, #00e0ff) !important; /* พื้นหลังนีออนไล่เฉด */
+  color: #000000 !important;   /* ตัวอักษรดำเพื่อคอนทราสต์กับพื้นหลังนีออน */
+  font-weight: 700;
+}
+
+/* เพิ่มความคมชัดของหัวคอลัมน์ InginiaOS */
+#comparisonTable th:nth-child(5) {
+  font-size: 1rem;
+}
+/* ซ่อน Lite vs Starter ทั้งบล็อกให้หายไปจาก layout */
+#compare-lite-starter { 
+  display: none !important; 
+}
+:root {
+  --brand: #00ff88;
+  --bg-dark: #0d0d0d;
+  --gray: #444;
+  --gray-light: #666;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Noto Sans Thai', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#stage-progress {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(35px, 4vw, 36px);
+  font-weight: 800;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #fff, var(--brand), #00e0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* แถบ Stage */
+.stage-bar {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.stage-block {
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.4s ease;
+  user-select: none;
+}
+
+.stage-block.small {
+  flex: 0 0 80px;
+  font-size: 0.9rem;
+  background: #1a1a1a;
+  color: #888;
+  transform: scale(0.9);
+}
+.stage-block.medium {
+  flex: 0 0 120px;
+  font-size: 1rem;
+  background: #222;
+  color: #aaa;
+  transform: scale(1);
+}
+.stage-block.large {
+  flex: 0 0 180px;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #003322, #00ff88);
+  color: #000;
+  box-shadow: 0 0 20px rgba(0,255,136,0.5);
+  transform: scale(1.1);
+}
+
+/* เนื้อหา */
+.stage-container {
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 200px;
+}
+
+.stage-panel {
+  display: none;
+  padding: 30px;
+  border-radius: 14px;
+  animation: fadeIn 0.5s ease;
+  background: #111;
+}
+
+.stage-panel h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.stage-panel p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.stage-panel .result {
+  margin-top: 16px;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.note {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* ===== Sticky Footer Layout (no HTML changes) ===== */
+html, body {
+  height: 100%;
+}
+body {
+  min-height: 100svh;            /* รองรับมือถือ/Notch */
+  display: flex;
+  flex-direction: column;
+}
+footer {
+  margin-top: auto;               /* ดัน footer ไปก้นหน้าจอเมื่อคอนเทนต์สั้น */
+  width: 100%;
+}
+
+/* ===== Compact Footer Mode ===== */
+footer {
+  padding: 8px 10px !important;
+  text-align: center !important;
+  border-top: 1px solid #111 !important;
+  color: #888 !important;
+  background: #000 !important;
+}
+
+footer p,
+footer span {
+  margin: 2px 0 !important;
+  line-height: 1.4 !important;
+}
+
+footer .trust-logos.darkmode {
+  margin-top: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+footer .trust-logos.darkmode img {
+  height: 26px !important;
+  opacity: 0.8 !important;
+  margin: 0 !important;
+}
+footer .trust-logos.darkmode img:hover {
+  opacity: 1 !important;
+  transform: scale(1.05) !important;
+}
+
+footer .trust-logos.darkmode .etc-tag,
+footer .trust-logos.darkmode button {
+  margin: 4px 0 !important;
+  padding: 4px 8px !important;
+  font-size: 0.8rem !important;
+  line-height: 1.2 !important;
+}
