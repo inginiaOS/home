@@ -1533,3 +1533,6 @@ footer .trust-logos.darkmode button {
 #comparisonTable td {
   white-space: nowrap !important;  /* กันขึ้นบรรทัดใหม่ */
 }
+#comparison {
+  display: none !important;
+}
