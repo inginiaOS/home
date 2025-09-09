@@ -1484,36 +1484,3 @@ footer .trust-logos.darkmode button {
   font-size: 0.8rem !important;
   line-height: 1.2 !important;
 }
-/* ===== FORCE HORIZONTAL SCROLL FOR #comparisonTable ===== */
-#comparisonTable {
-  overflow-x: auto !important;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-}
-
-#comparisonTable .table-wrapper {
-  overflow-x: auto !important;         /* เผื่อบางธีมครอบอีกชั้น */
-  width: 100% !important;
-}
-
-/* จุดสำคัญ: ห้ามบังคับ width:100% ให้ table  */
-#comparisonTable table {
-  width: max-content !important;       /* ให้กว้างเท่าคอนเทนต์จริง เพื่อเกิด scroll */
-  min-width: 980px !important;         /* กันไม่ให้บีบเกินไป */
-  border-collapse: collapse;
-}
-
-/* เซลล์ให้คงความกว้าง อ่านง่าย */
-#comparisonTable th,
-#comparisonTable td {
-  white-space: nowrap;                 /* ป้องกันขึ้นบรรทัดใหม่จนตารางย่น */
-  text-align: center;
-  padding: 14px 16px;
-}
-
-/* ให้คอลัมน์แรก (หัวข้อแถว) ยังขึ้นบรรทัดได้ */
-#comparisonTable td:first-child,
-#comparisonTable th:first-child {
-  white-space: normal !important;
-  text-align: left;
-}
