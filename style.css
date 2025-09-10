@@ -1038,14 +1038,14 @@ body section#closing .highlight-box {
 body section#closing p { font-size: clamp(1rem, 2.6vw, 1.4rem); }
 /* ===== Proof Cases Section ===== */
 #proof-cases {
-  padding: 80px 20px;
+  padding: 20px 20px;
   text-align: center;
   max-width: 100%;
   margin: 0 auto;
 }
 
 #proof-cases h2 {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .proof-card {
@@ -1081,7 +1081,7 @@ body section#closing p { font-size: clamp(1rem, 2.6vw, 1.4rem); }
 }
 /* ===== Pain Points Section (Apple-like Responsive) ===== */
 #pain-points {
-  padding: clamp(48px,6vw,96px) 20px;
+  padding: clamp(48px,6vw,48px) 20px;
   max-width: 980px;
   margin: 0 auto;
   text-align: left;
@@ -1122,8 +1122,8 @@ body section#closing p { font-size: clamp(1rem, 2.6vw, 1.4rem); }
 }
 
 .pain-icon img {
-  width: 36px;
-  height: 36px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 }
 
@@ -1546,4 +1546,12 @@ html, body {
 #intro-cards .cards-container {
   touch-action: pan-x pan-y;   /* หรือ auto; ก็ได้ */
   -webkit-overflow-scrolling: touch;
+}
+.features-intro {
+  max-width: 800px;   /* จำกัดความกว้างให้อ่านง่าย */
+  margin: 0 auto 0px; /* จัดให้อยู่กึ่งกลาง + เว้นด้านล่าง 30px */
+  padding: 0 20px;    /* กันขอบซ้ายขวาไม่ให้ชิดเกินไป */
+  line-height: 1.6;
+  color: #ccc;
+  text-align: center; /* หรือ left ถ้าอยากให้อ่านแบบปกติ */
 }
