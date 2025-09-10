@@ -1345,22 +1345,29 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* แถบ Stage */
+/* ===== FIX: Stage Progress Section ===== */
+#stage-progress {
+  padding: 80px 20px;
+  text-align: center;
+  max-width: 1100px;   /* ✅ เหมือน section อื่น */
+  margin: 0 auto;
+}
+
 .stage-bar {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   gap: 14px;
-  margin-bottom: 40px;
+  flex-wrap: wrap;     /* ✅ ให้ responsive แบบเดียวกับ section อื่น */
 }
 
 .stage-block {
+  flex: 1 1 auto;      /* ✅ ขยาย/หดอัตโนมัติ */
+  min-width: 80px;     /* กันไม่ให้หดจนเละ */
   padding: 12px;
   border-radius: 12px;
-  cursor: pointer;
   font-weight: 700;
-  transition: all 0.4s ease;
-  user-select: none;
+  text-align: center;
 }
 
 .stage-block.small {
