@@ -1571,3 +1571,45 @@ html, body {
   color: #ccc;
   text-align: center; /* หรือ left ถ้าอยากให้อ่านแบบปกติ */
 }
+/* ===== HERO BUBBLES ===== */
+#top .hero-bubbles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 14px 0 10px 0;
+}
+
+#top .hero-bubble {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(0,255,136,0.35);
+  box-shadow: 0 0 0 1px rgba(0,224,255,0.15) inset;
+  backdrop-filter: blur(6px);
+}
+
+#top .hero-emoji {
+  font-size: 1.25rem;
+  line-height: 1;
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(100% 100% at 30% 30%, rgba(0,255,136,0.35), rgba(0,224,255,0.15));
+}
+
+#top .hero-bubble-text {
+  color: #eaeaea;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+/* responsive micro-tweak */
+@media (max-width: 420px) {
+  #top .hero-bubbles { grid-template-columns: 1fr; }
+}
