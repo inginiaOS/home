@@ -2123,3 +2123,19 @@ html, body {
 #intro-cards .cards-container { 
   margin-top: 8px;               /* ปรับ 6–14px ตามที่ชอบ */
 }
+/* ===== ปรับข้อความก่อนการ์ดให้เต็มกรอบมากขึ้น ===== */
+.features-intro {
+  max-width: none !important;   /* ยกเลิกการล็อกความกว้างไว้ที่ 900px */
+  width: 100%;                  /* ให้ขยายเต็มพื้นที่พาเรนต์ */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 12px;              /* เหลือขอบด้านข้างเล็กน้อยเพื่อไม่ชนขอบจอ */
+  text-align: center;
+}
+
+/* มือถือ: ลด padding ให้พอดีขอบจอ */
+@media (max-width: 640px) {
+  .features-intro {
+    padding: 0 10px;
+  }
+}
