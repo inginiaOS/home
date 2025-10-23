@@ -2174,3 +2174,60 @@ html, body {
 .features-intro h3 {
   max-width: none !important;
 }
+/* === Spacing overrides for #intro + #revealContent (Responsive) === */
+/* Base (desktop-ish default) */
+#intro{
+  padding-top: 64px !important;
+  padding-bottom: 36px !important;   /* ลดช่องว่างใต้ section */
+  margin-bottom: 0 !important;
+}
+#intro p{
+  margin-bottom: 14px !important;    /* ลดช่องไฟระหว่างย่อหน้า */
+}
+#revealContent{
+  margin-top: 18px !important;       /* ลดระยะห่างระหว่างข้อความกับปุ่ม */
+}
+
+/* เมื่อยังอยู่โหมด intro-hide และปุ่มลอยอยู่ล่างหน้าจอ → กันชนไม่ให้ทับข้อความ */
+body.intro-hide #intro{
+  padding-bottom: 110px !important;  /* กันพื้นที่สำหรับปุ่มลอย */
+}
+
+/* ————— Mobile (≤640px) ————— */
+@media (max-width: 640px){
+  #intro{
+    padding-top: 48px !important;
+    padding-bottom: 28px !important;
+  }
+  #intro p{ margin-bottom: 12px !important; }
+  #revealContent{
+    margin-top: 14px !important;
+    padding: 14px 22px !important;   /* ปุ่มกระชับขึ้นบนจอเล็ก */
+  }
+  body.intro-hide #intro{
+    padding-bottom: 88px !important; /* กันพื้นที่ปุ่มลอยบนมือถือ */
+  }
+  /* ถ้าใช้คลาส sticky-attention ให้ปุ่มยกสูงขึ้นนิดกันกินขอบล่าง */
+  #revealContent.sticky-attention{ bottom: 16px !important; }
+}
+
+/* ————— Tablet (641–1024px) ————— */
+@media (min-width: 641px) and (max-width: 1024px){
+  #intro{
+    padding-top: 56px !important;
+    padding-bottom: 32px !important;
+  }
+  #revealContent{ margin-top: 16px !important; }
+  body.intro-hide #intro{ padding-bottom: 96px !important; }
+}
+
+/* ————— Desktop (≥1025px) ————— */
+@media (min-width: 1025px){
+  #intro{
+    padding-top: 64px !important;
+    padding-bottom: 36px !important;
+  }
+  #revealContent{ margin-top: 18px !important; }
+  body.intro-hide #intro{ padding-bottom: 110px !important; }
+}
+/* === end overrides === */
