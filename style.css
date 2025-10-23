@@ -1613,3 +1613,140 @@ html, body {
 @media (max-width: 420px) {
   #top .hero-bubbles { grid-template-columns: 1fr; }
 }
+/* =========================================================
+   InginiaOS — 3 Gaps (FINAL CSS for your given HTML)
+   Works with:  #system-gap, #memory-gap, #engine-gap
+   HTML classes: .os-section .h2-grad .lead .solution .difference .result .sr-only
+   ========================================================= */
+
+/* ---------- Section Accent Colors (per gap) ---------- */
+#system-gap  { --accent: #00ff88; --accent2: #00ccff; }   /* เขียว → ฟ้า */
+#memory-gap  { --accent: #00d1ff; --accent2: #6a7cff; }   /* ฟ้า → ม่วง */
+#engine-gap  { --accent: #9dff6a; --accent2: #00ff88; }   /* ไลม์ → เขียว */
+
+/* ---------- Base Section ---------- */
+.os-section{
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 40px 24px;
+  background: linear-gradient(180deg, rgba(10,10,10,0.85), rgba(5,5,5,0.95));
+  border-radius: 24px;
+  border: 1px solid rgba(0,255,136,0.2);
+  box-shadow: 0 0 60px rgba(0,255,136,0.05);
+  color: #f5f5f5;
+  font-family: "Noto Sans Thai", system-ui, -apple-system, sans-serif;
+  line-height: 1.7;
+  box-sizing: border-box;
+}
+
+/* ให้ช่องโหว่ทั้ง 3 อยู่ชิดกันนิดหน่อย */
+.os-section + .os-section { margin-top: 16px; }
+
+/* ---------- Heading (Gradient) ---------- */
+.os-section .h2-grad{
+  font-size: 1.8rem;
+  background: linear-gradient(90deg, var(--accent, #00ff88), var(--accent2, #00ccff));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+  text-align: center;
+}
+
+/* ---------- Divider ---------- */
+.os-section hr{
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 24px 0;
+}
+
+/* ---------- Lead (ปัญหา) ---------- */
+.os-section .lead{
+  background: rgba(255,255,255,0.02);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.os-section .lead ul{
+  margin: 10px 0 0 20px;
+  list-style-type: "— ";
+  list-style-position: inside;
+  color: #aaa;
+}
+.os-section .lead li strong,
+.os-section .lead p strong{ color: var(--accent, #00ff88); }
+
+/* ---------- Solution (ทางออก) ---------- */
+.os-section .solution{
+  background: color-mix(in oklab, var(--accent, #00ff88) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--accent, #00ff88) 35%, transparent);
+  border-radius: 16px;
+  padding: 22px;
+}
+.os-section .solution strong{ color: var(--accent, #00ff88); }
+
+/* ---------- Difference (เหนือกว่า AI ทั่วไป) ---------- */
+.os-section .difference{
+  background: rgba(255,255,255,0.02);
+  border-radius: 16px;
+  padding: 22px;
+}
+.os-section .difference strong{ color: var(--accent, #00ff88); }
+.os-section .difference em{ color: #ccc; }
+
+.os-section .difference ul{
+  margin: 12px 0 0 20px;
+  list-style-type: "▸ ";
+  list-style-position: inside;
+  color: #aaa;
+}
+
+.os-section .difference blockquote{
+  margin: 18px 0;
+  padding: 16px 18px;
+  background: color-mix(in oklab, var(--accent, #00ff88) 18%, transparent);
+  border-left: 3px solid var(--accent, #00ff88);
+  border-radius: 10px;
+  color: color-mix(in oklab, var(--accent, #00ff88) 75%, white 25%);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* ---------- Result (ผลลัพธ์) ---------- */
+.os-section .result{
+  text-align: center;
+  background:
+    linear-gradient(135deg,
+      color-mix(in oklab, var(--accent, #00ff88) 14%, transparent),
+      color-mix(in oklab, var(--accent2, #00ccff) 14%, transparent)
+    );
+  border: 1px solid color-mix(in oklab, var(--accent, #00ff88) 35%, transparent);
+  border-radius: 16px;
+  padding: 26px;
+}
+.os-section .result strong{
+  color: var(--accent, #00ff88);
+  font-weight: 700;
+}
+.os-section .result p:last-child{
+  font-size: 1.2rem;
+  color: #e0ffe5;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+/* ---------- Screen-reader only ---------- */
+.sr-only{
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px){
+  .os-section{ padding: 28px 16px; margin: 40px 12px; }
+  .os-section .h2-grad{ font-size: 1.5rem; }
+  .os-section .result p:last-child{ font-size: 1.05rem; }
+}
