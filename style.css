@@ -1750,3 +1750,154 @@ html, body {
   .os-section .h2-grad{ font-size: 1.5rem; }
   .os-section .result p:last-child{ font-size: 1.05rem; }
 }
+/* =========================================================
+   InginiaOS — SECTION: Agency Killer (distinct but cohesive)
+   Scope: #agency-killer + .ak-*
+   ========================================================= */
+
+#agency-killer {
+  --ak-accent: #ff7ad6;      /* ชมพูม่วง (ต่างจากเขียว/ฟ้าใน 3 ช่องโหว่) */
+  --ak-accent2: #7aa9ff;     /* ฟ้าอ่อนอมม่วง */
+  --ak-bg1: rgba(13, 10, 16, 0.92);   /* โทนม่วงเข้ม */
+  --ak-bg2: rgba(8, 6, 10, 0.97);
+  --ak-soft: rgba(255, 122, 214, 0.22);
+
+  max-width: 980px;
+  margin: 84px auto;
+  padding: clamp(28px, 5vw, 44px) clamp(18px, 4.6vw, 32px);
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(255,122,214,0.10), transparent 45%),
+              linear-gradient(180deg, var(--ak-bg1), var(--ak-bg2));
+  border: 1px solid var(--ak-soft);
+  border-radius: 26px;
+  box-shadow: 0 0 70px rgba(255,122,214,0.06);
+  color: #f5f5f7;
+  font-family: "Noto Sans Thai", system-ui, -apple-system, sans-serif;
+  line-height: 1.75;
+}
+
+/* Header */
+.ak-header {
+  text-align: center;
+  margin-bottom: clamp(18px, 3vw, 28px);
+}
+
+.ak-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  border-radius: 999px;
+  border: 1px solid var(--ak-soft);
+  background: rgba(255,255,255,0.03);
+  color: var(--ak-accent);
+  margin-bottom: 12px;
+}
+
+.ak-title {
+  font-size: clamp(1.28rem, 2.6vw, 1.85rem);
+  font-weight: 800;
+  margin: 6px auto 10px;
+  background: linear-gradient(90deg, var(--ak-accent), var(--ak-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ak-intro {
+  color: #d9d9e3;
+  margin: 0 auto;
+  max-width: 820px;
+}
+.ak-intro strong { color: var(--ak-accent); }
+
+.ak-quote {
+  max-width: 820px;
+  margin: clamp(14px, 2.4vw, 20px) auto 0;
+  padding: clamp(12px, 2.4vw, 16px) clamp(14px, 2.6vw, 18px);
+  background: color-mix(in oklab, var(--ak-accent) 14%, transparent);
+  border-left: 3px solid var(--ak-accent);
+  border-radius: 12px;
+  font-style: italic;
+  color: color-mix(in oklab, var(--ak-accent) 75%, white 25%);
+}
+
+/* Table wrapper (scrollable on mobile) */
+.ak-table-wrap {
+  margin-top: clamp(16px, 3vw, 28px);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.ak-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(0.95rem, 1.6vw, 1.02rem);
+}
+
+.ak-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+  color: #f8eaff;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  white-space: nowrap;
+}
+
+.ak-table tbody td {
+  padding: 14px 16px;
+  color: #dfe2f2;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* zebra rows for readability */
+.ak-table tbody tr:nth-child(odd)  td { background: rgba(255,255,255,0.02); }
+.ak-table tbody tr:nth-child(even) td { background: rgba(255,255,255,0.04); }
+
+/* highlight InginiaOS column */
+.ak-table tbody td.ak-hi {
+  color: #eafff6;
+  font-weight: 700;
+  background:
+    linear-gradient(90deg,
+      color-mix(in oklab, var(--ak-accent) 8%, transparent),
+      transparent 70%);
+  border-left: 2px solid color-mix(in oklab, var(--ak-accent) 40%, transparent);
+}
+
+/* First column (หัวข้อ) */
+.ak-table tbody td:first-child,
+.ak-table thead th:first-child {
+  min-width: 160px;
+  width: 28%;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Scroll hint on small screens */
+.ak-scroll-hint {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #bcbcd6;
+  padding: 10px 0 12px;
+  background: rgba(255,255,255,0.02);
+}
+
+/* Responsive: allow horizontal scroll if needed */
+@media (max-width: 840px) {
+  .ak-table-wrap { overflow-x: auto; }
+  .ak-table { min-width: 700px; }
+}
+
+@media (max-width: 560px) {
+  #agency-killer {
+    margin: 56px 12px;
+    border-radius: 20px;
+  }
+  .ak-badge { padding: 7px 12px; }
+  .ak-quote { border-left-width: 2px; }
+}
