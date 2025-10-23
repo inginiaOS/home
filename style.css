@@ -2139,3 +2139,38 @@ html, body {
     padding: 0 10px;
   }
 }
+/* 1) ปลดล็อกความกว้างที่ค้างมาจากกฎเดิมทั้งหมด */
+.story-section .features-intro,
+#intro-cards .features-intro {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 24px 0 18px !important;   /* ลดช่องว่างบน-ล่างให้กระชับ */
+  padding: 0 !important;            /* ล้าง padding เดิมออกก่อน */
+  text-align: center;
+}
+
+/* 2) ดึงให้ "เต็มกรอบใน story-section" แบบพอดีกับขอบในของกรอบนั้น
+   (กรอบคุณมักมี padding ซ้าย/ขวาอยู่ เราใช้ margin ติดลบชดเชย แล้วคืน padding กลับเท่าเดิม)
+   — ปรับเลข 16/24 ให้เท่ากับ padding ซ้าย-ขวาของ .story-section ที่คุณใช้จริง */
+@media (max-width: 640px) {
+  .story-section .features-intro {
+    margin-left: -16px !important;   /* ชดเชย padding ซ้ายของกรอบ */
+    margin-right: -16px !important;  /* ชดเชย padding ขวาของกรอบ */
+    padding-left: 16px !important;   /* ใส่คืนเพื่อไม่ให้ชนขอบจอ */
+    padding-right: 16px !important;
+  }
+}
+@media (min-width: 641px) {
+  .story-section .features-intro {
+    margin-left: -24px !important;
+    margin-right: -24px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+/* 3) กันเหนียว: ถ้า p/h3 ด้านในเคยถูกกำหนด max-width มาก่อน ให้ปลดด้วย */
+.features-intro p,
+.features-intro h3 {
+  max-width: none !important;
+}
