@@ -1013,7 +1013,8 @@ inginiaOS = ระบบเต็มที่พร้อม Human Review + Funn
 <script>
   AOS.init({
     duration: 1000,  // ความเร็วของ animation
-    once: true       // ให้เล่นครั้งเดียว (เลื่อนกลับขึ้นมาไม่เล่นซ้ำ)
+    once: true,       // ให้เล่นครั้งเดียว (เลื่อนกลับขึ้นมาไม่เล่นซ้ำ)
+    startEvent: 'load' // [CHANGED] รอให้โหลดหน้าเสร็จทั้งหมดก่อนค่อย init AOS เพื่อลดปัญหาคำนวณตำแหน่งตอน element ถูกซ่อน
   });
 </script>
     <script>
@@ -1060,6 +1061,12 @@ inginiaOS = ระบบเต็มที่พร้อม Human Review + Funn
         revealList.forEach(function(el, i){
           setTimeout(function(){ el.classList.add("visible"); }, i*180);
         });
+
+        /* [CHANGED] หลังจากปลดล็อกแล้ว ให้ AOS คำนวณตำแหน่งใหม่ (เพราะก่อนหน้า element ถูก display:none) */
+        if (window.AOS && typeof AOS.refreshHard === 'function') {
+          setTimeout(function(){ AOS.refreshHard(); }, 60);
+        }
+
         // เลื่อนต่อเนื้อหาถัดไปนิดๆ
         var target = document.getElementById("system-gap") || document.getElementById("solution");
         if(target){
@@ -1223,6 +1230,12 @@ inginiaOS = ระบบเต็มที่พร้อม Human Review + Funn
     padding: 16px 28px !important;
   }
 
+  /* [CHANGED] ตั้งค่าเริ่มต้น: ขณะ body มี .intro-hide ให้ปุ่มอยู่ fixed ทันที (กันอาการเด้งจากซ้ายไปกลางจอ) */
+  body.intro-hide #revealContent{
+    position: fixed !important; left: 50% !important; bottom: 20px !important;
+    transform: translateX(-50%) !important; z-index: 9998 !important;
+  }
+
   /* เคารพคีย์บอร์ด/โฟกัส */
   #revealContent:focus-visible{
     outline: 3px solid #fff; outline-offset: 3px;
@@ -1257,28 +1270,28 @@ inginiaOS = ระบบเต็มที่พร้อม Human Review + Funn
     var btn = document.getElementById('revealContent');
     if(!btn) return;
 
-    // โหมดเริ่มต้น: ถ้ายังอยู่ช่วงซ่อน (intro-hide) ให้ลอยติดจอ
-    if(document.body.classList.contains('intro-hide')){
-      btn.classList.add('sticky-attention');
-    }
+    // [CHANGED] ไม่ต้องเพิ่มคลาส sticky-attention ด้วย JS แล้ว (ใช้ CSS ด้านบนคุมสภาพเริ่มต้นแทน)
+    // if(document.body.classList.contains('intro-hide')){
+    //   btn.classList.add('sticky-attention');
+    // }
 
     // เมื่อกดปุ่ม → เอา sticky ออก (เนื้อหาเริ่มโชว์)
     btn.addEventListener('click', function(){
-      btn.classList.remove('sticky-attention');
+      btn.classList.remove('sticky-attention'); // คงไว้ ไม่มีผลเสีย
     });
 
-    // เผื่อผู้ใช้เลื่อนผ่าน intro เร็ว ๆ: ถ้า #intro พ้นจอ ให้ปุ่มลอยขึ้นมาอัตโนมัติ
-    var intro = document.getElementById('intro');
-    if(intro && 'IntersectionObserver' in window){
-      var io = new IntersectionObserver(function(entries){
-        var e = entries[0];
-        if(document.body.classList.contains('intro-hide')){
-          if(!e.isIntersecting){ btn.classList.add('sticky-attention'); }
-          else{ btn.classList.remove('sticky-attention'); }
-        }
-      }, {threshold: 0.2});
-      io.observe(intro);
-    }
+    // [CHANGED] ปิดการใช้ IntersectionObserver ที่สลับคลาสไปมาเพราะทำให้เกิดอาการเด้ง
+    // var intro = document.getElementById('intro');
+    // if(intro && 'IntersectionObserver' in window){
+    //   var io = new IntersectionObserver(function(entries){
+    //     var e = entries[0];
+    //     if(document.body.classList.contains('intro-hide')){
+    //       if(!e.isIntersecting){ btn.classList.add('sticky-attention'); }
+    //       else{ btn.classList.remove('sticky-attention'); }
+    //     }
+    //   }, {threshold: 0.2});
+    //   io.observe(intro);
+    // }
   });
 </script>
   <!-- FIX: keep Proof & FAQ visible even in intro-hide -->
