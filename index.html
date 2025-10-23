@@ -1168,7 +1168,7 @@ inginiaOS = ระบบเต็มที่พร้อม Human Review + Funn
     });
   });
 </script>
-  <!-- 🔴 ATTENTION BOOST for #revealContent (no text/HTML change) -->
+ <!-- 🔴 ATTENTION BOOST for #revealContent (no text/HTML change) -->
 <style>
   /* Spotlight พื้นหลัง intro ให้สะดุดตา */
   #intro{
@@ -1180,6 +1180,11 @@ inginiaOS = ระบบเต็มที่พร้อม Human Review + Funn
     position:absolute; inset:-10% -5% auto -5%; height:60%;
     background: radial-gradient(60% 60% at 50% 50%, rgba(255,59,48,.18), transparent 70%);
     z-index:-1; filter: blur(24px);
+  }
+
+  /* ✅ FIX: กันข้อความโดนทับเมื่อปุ่มลอย */
+  body.intro-hide #intro{ /* FIX */
+    padding-bottom: calc(160px + env(safe-area-inset-bottom)); /* FIX */
   }
 
   /* ปุ่มแดงแบบ Alert + แหวนกระเพื่อม + ลูกศรวิ่ง */
@@ -1224,16 +1229,22 @@ inginiaOS = ระบบเต็มที่พร้อม Human Review + Funn
 
   /* ให้ปุ่ม “ลอย” ติดขอบล่างถ้ายังไม่ได้กด (กันผู้ใช้เลื่อนผ่าน) */
   #revealContent.sticky-attention{
-    position: fixed; left: 50%; bottom: 20px;
+    position: fixed; left: 50%;
+    bottom: calc(16px + env(safe-area-inset-bottom)); /* FIX: เคารพ safe-area */
     transform: translateX(-50%);
     z-index: 9998;
     padding: 16px 28px !important;
+    max-width: min(520px, 92vw);  /* FIX: จำกัดความกว้างให้บาลานซ์ */
+    width: max-content;           /* FIX */
   }
 
-  /* [CHANGED] ตั้งค่าเริ่มต้น: ขณะ body มี .intro-hide ให้ปุ่มอยู่ fixed ทันที (กันอาการเด้งจากซ้ายไปกลางจอ) */
+  /* ขณะ body มี .intro-hide ให้ปุ่มอยู่ fixed ทันที (กันอาการเด้งจากซ้ายไปกลางจอ) */
   body.intro-hide #revealContent{
-    position: fixed !important; left: 50% !important; bottom: 20px !important;
+    position: fixed !important; left: 50% !important;
+    bottom: calc(16px + env(safe-area-inset-bottom)) !important; /* FIX */
     transform: translateX(-50%) !important; z-index: 9998 !important;
+    max-width: min(520px, 92vw) !important; /* FIX: สอดคล้องกับ sticky-attention */
+    width: max-content !important;          /* FIX */
   }
 
   /* เคารพคีย์บอร์ด/โฟกัส */
@@ -1259,8 +1270,14 @@ inginiaOS = ระบบเต็มที่พร้อม Human Review + Funn
 
   /* Mobile tweaks */
   @media (max-width: 640px){
-    #revealContent{ font-size: 1.15rem !important; padding: 16px 24px !important; }
-    #revealContent.sticky-attention{ bottom: 16px; }
+    #revealContent{
+      font-size: 1.15rem !important;
+      padding: 16px 24px !important;
+      max-width: 92vw; /* FIX: กันล้ำขอบจอ */
+    }
+    #revealContent.sticky-attention{
+      bottom: calc(16px + env(safe-area-inset-bottom)); /* FIX */
+    }
   }
 </style>
 
@@ -1270,31 +1287,16 @@ inginiaOS = ระบบเต็มที่พร้อม Human Review + Funn
     var btn = document.getElementById('revealContent');
     if(!btn) return;
 
-    // [CHANGED] ไม่ต้องเพิ่มคลาส sticky-attention ด้วย JS แล้ว (ใช้ CSS ด้านบนคุมสภาพเริ่มต้นแทน)
-    // if(document.body.classList.contains('intro-hide')){
-    //   btn.classList.add('sticky-attention');
-    // }
+    // ไม่ต้องเพิ่ม/สลับคลาสด้วย IO แล้ว ใช้ CSS คุมสภาพเริ่มต้นแทน
+    // (บรรทัดเดิมถูกคอมเมนต์ไว้แล้ว)
 
     // เมื่อกดปุ่ม → เอา sticky ออก (เนื้อหาเริ่มโชว์)
     btn.addEventListener('click', function(){
-      btn.classList.remove('sticky-attention'); // คงไว้ ไม่มีผลเสีย
+      btn.classList.remove('sticky-attention'); // คงไว้ได้ ไม่มีผลข้างเคียง
     });
-
-    // [CHANGED] ปิดการใช้ IntersectionObserver ที่สลับคลาสไปมาเพราะทำให้เกิดอาการเด้ง
-    // var intro = document.getElementById('intro');
-    // if(intro && 'IntersectionObserver' in window){
-    //   var io = new IntersectionObserver(function(entries){
-    //     var e = entries[0];
-    //     if(document.body.classList.contains('intro-hide')){
-    //       if(!e.isIntersecting){ btn.classList.add('sticky-attention'); }
-    //       else{ btn.classList.remove('sticky-attention'); }
-    //     }
-    //   }, {threshold: 0.2});
-    //   io.observe(intro);
-    // }
   });
 </script>
-  <!-- FIX: keep Proof & FAQ visible even in intro-hide -->
+<!-- FIX: keep Proof & FAQ visible even in intro-hide -->
 <style>
   body.intro-hide #proof-cases,
   body.intro-hide #faq {
