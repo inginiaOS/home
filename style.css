@@ -2102,3 +2102,48 @@ html, body {
   #intro-cards .intro-card h3 { font-size: 1.02rem; }
   #intro-cards .intro-card h4 { font-size: 0.95rem; }
 }
+/* =========================================================
+   InginiaOS — Features Intro (ข้อความก่อนการ์ด)
+   ========================================================= */
+.features-intro {
+  text-align: center;
+  margin: 60px auto 40px;
+  max-width: 900px;
+  color: #eaf7f1;
+  font-family: "Noto Sans Thai", "Prompt", sans-serif;
+  line-height: 1.9;
+}
+
+.features-intro p {
+  font-size: 1.15rem;
+  color: #d9fdea;
+  margin-bottom: 14px;
+}
+
+.features-intro strong {
+  color: #00ff88;
+  font-weight: 700;
+}
+
+.features-intro h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #00ffb0;
+  margin-top: 14px;
+  background: linear-gradient(90deg, #00ff88, #00ccff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .features-intro {
+    margin: 40px 16px 28px;
+  }
+  .features-intro p {
+    font-size: 1.05rem;
+  }
+  .features-intro h3 {
+    font-size: 1.05rem;
+  }
+}
