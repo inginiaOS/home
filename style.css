@@ -1998,7 +1998,7 @@ html, body {
 /* โทนโดยรวม: มืดเนียน, ขอบบาง, เงานุ่ม, ตัวอักษรอ่านง่าย */
 
 #intro-cards .cards-container {
-  gap: 24px;                       /* ระยะห่างนุ่มขึ้นเล็กน้อย */
+  gap: 12px;                       /* ระยะห่างนุ่มขึ้นเล็กน้อย */
   scrollbar-color: rgba(180, 255, 220, 0.25) transparent;
 }
 #intro-cards .cards-container::-webkit-scrollbar-thumb {
@@ -2095,4 +2095,31 @@ html, body {
   }
   #intro-cards .intro-card h3 { font-size: 1.04rem; }
   #intro-cards .intro-card p  { font-size: 0.97rem; }
+}
+/* บีบช่องว่างระหว่างการ์ด */
+#intro-cards .cards-container {
+  gap: 12px;                     /* เดิม ~24–28px -> แคบลงให้เห็นการ์ดถัดไป */
+  padding-right: 12px;           /* ให้ขอบขวาไม่ทิ้งร่อง */
+}
+
+/* ดันแถวการ์ดไปชิดขอบขวา */
+@media (max-width: 900px) {
+  #intro-cards .cards-container { 
+    padding-left: 14px;          /* เหลือร่องซ้ายเล็กน้อยสำหรับสไลด์ */
+  }
+}
+
+/* ถ้าต้องการ peek การ์ดถัดไปให้เห็นมากขึ้นบนจอเล็ก */
+@media (max-width: 640px) {
+  #intro-cards .intro-card { 
+    flex: 0 0 82%;               /* เดิม 86% → เห็นขอบการ์ดถัดไปมากขึ้น */
+  }
+}
+/* เพิ่มระยะใต้ข้อความสรุปก่อนการ์ด */
+.features-intro { 
+  margin-bottom: 22px;           /* เดิมอาจชิดเกินไป ปรับได้ 18–28px */
+}
+/* กันเหนียว: ถ้าการ์ดยังชิด ให้ดัน container ลงอีกนิด */
+#intro-cards .cards-container { 
+  margin-top: 8px;               /* ปรับ 6–14px ตามที่ชอบ */
 }
