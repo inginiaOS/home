@@ -1994,4 +1994,105 @@ html, body {
     border-left-width: 2px;
   }
 }
+/* ========== Soft Theme Overrides for #intro-cards ========== */
+/* โทนโดยรวม: มืดเนียน, ขอบบาง, เงานุ่ม, ตัวอักษรอ่านง่าย */
 
+#intro-cards .cards-container {
+  gap: 24px;                       /* ระยะห่างนุ่มขึ้นเล็กน้อย */
+  scrollbar-color: rgba(180, 255, 220, 0.25) transparent;
+}
+#intro-cards .cards-container::-webkit-scrollbar-thumb {
+  background: rgba(180, 255, 220, 0.25);
+}
+
+/* การ์ด—พื้นหลังมืดเนียน ไม่แสบตา */
+#intro-cards .intro-card {
+  background:
+    linear-gradient(180deg, rgba(18,18,20,0.96), rgba(12,12,14,0.96));
+  border: 1px solid rgba(180, 255, 220, 0.18);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255,255,255,0.03) inset;   /* ขอบในบาง ๆ ให้ฟอร์มชัด */
+  color: #e8efec;                               /* ตัวอักษรสว่างขึ้นเล็กน้อย */
+  line-height: 1.75;
+}
+
+#intro-cards .intro-card:hover {
+  transform: translateY(-4px);                  /* ยกน้อยลง */
+  border-color: rgba(180, 255, 220, 0.36);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(180, 255, 220, 0.10) inset;
+}
+
+/* หัวข้อ: เลิกไล่สีแรง ๆ → ใช้ไล่สีอ่อนมาก + เงาข้อความบาง ๆ เพื่อให้อ่านง่าย */
+#intro-cards .intro-card h3 {
+  -webkit-text-fill-color: initial;             /* ยกเลิกโปร่งใส */
+  color: #f3f8f6;                               /* เกือบขาว แต่ไม่ขาวจ้า */
+  background: linear-gradient(90deg, #f3f8f6, #cfeee4);
+  -webkit-background-clip: text;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,0.25));
+  letter-spacing: 0.1px;
+  margin-bottom: 12px;
+}
+
+/* เนื้อความ: สีเทาอ่านง่ายขึ้น */
+#intro-cards .intro-card p {
+  color: #cfd8d4;                               /* นุ่มกว่าเดิม */
+  font-size: 0.98rem;
+}
+
+/* Subhead/ผลลัพธ์ใน h4: ใช้สีเขียวอ่อน ไม่นีออน */
+#intro-cards .intro-card h4 {
+  color: #baf5df;                               /* เขียวอ่อนนวล */
+  font-weight: 700;
+}
+
+/* ลดความจัดของแสงเฉพาะแต่ละการ์ด (accents) */
+#intro-cards .card1 {
+  background:
+    radial-gradient(420px 220px at 10% -10%, rgba(186,245,223,0.08), transparent 60%),
+    linear-gradient(180deg, rgba(18,18,20,0.96), rgba(12,12,14,0.96));
+}
+#intro-cards .card2 {
+  background:
+    radial-gradient(420px 220px at 50% -10%, rgba(180,225,255,0.07), transparent 60%),
+    linear-gradient(180deg, rgba(18,18,20,0.96), rgba(12,12,14,0.96));
+}
+#intro-cards .card3 {
+  background:
+    radial-gradient(420px 220px at 90% -10%, rgba(255,255,255,0.05), transparent 60%),
+    linear-gradient(180deg, rgba(18,18,20,0.96), rgba(12,12,14,0.96));
+}
+
+/* ปรับระยะภายในให้โปร่งหายใจขึ้นเล็กน้อย */
+#intro-cards .intro-card {
+  padding: 24px 20px;
+}
+
+/* ===== Features Intro (ข้อความก่อนการ์ด) — นุ่มตาขึ้น ===== */
+.features-intro p {
+  color: #dfeee8;                               /* ขาวอมเขียว นุ่มตา */
+}
+.features-intro h3 {
+  -webkit-text-fill-color: initial;
+  color: #eaf6f1;
+  background: none;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,0.25));
+}
+
+/* ===== Accessibility / Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  #intro-cards .intro-card { transition: none; }
+  #intro-cards .intro-card:hover { transform: none; }
+}
+
+/* ===== Responsive Tweaks: ลดความจ้าบนหน้าจอเล็ก ===== */
+@media (max-width: 640px) {
+  #intro-cards .intro-card { 
+    border-color: rgba(180, 255, 220, 0.22);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  }
+  #intro-cards .intro-card h3 { font-size: 1.04rem; }
+  #intro-cards .intro-card p  { font-size: 0.97rem; }
+}
