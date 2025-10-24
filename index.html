@@ -1249,42 +1249,6 @@ InginiaOS จะให้ Mood & Tone, Reference, Visual Idea ที่ proven �
     display: block !important;
   }
 </style>
-	<script>
-  // ===== CONFIG ของจริง =====
-  const LIFF_ID = "2007908663-NawZjDxL";     // ✅ LIFF ID ของคุณ
-  const OA_BASIC_ID = "@717xokfa";           // ✅ Basic ID ของ LINE OA
-
-  const LINE_ADD_FRIEND_URL = `https://line.me/R/ti/p/${OA_BASIC_ID}`;
-  const LIFF_URL = `https://liff.line.me/${LIFF_ID}`;
-
-  // ===== CORE LOGIC =====
-  document.addEventListener("DOMContentLoaded", async () => {
-    let inLiff = false;
-
-    if (window.liff) {
-      try {
-        await liff.init({ liffId: LIFF_ID });
-        inLiff = liff.isInClient(); // อยู่ในแอป LINE จริง
-      } catch (e) {
-        console.warn("LIFF init failed, fallback to web mode");
-      }
-    }
-
-    // ตรวจปุ่มที่ต้องพาไป LINE
-    document.querySelectorAll(".cta-line").forEach(btn => {
-      btn.addEventListener("click", ev => {
-        if (!inLiff) {
-          ev.preventDefault();
-          const go = confirm(
-            "เพื่อประสบการณ์ไร้รอยต่อ และสื่อสารกับผู้ก่อตั้งได้โดยตรง\nกรุณาเพิ่มเพื่อน LINE ก่อนดำเนินการต่อ ✅"
-          );
-          if (go) window.location.href = LINE_ADD_FRIEND_URL;
-        }
-        // ถ้าอยู่ใน LIFF → ปล่อยให้ระบบเดิมทำงานต่อได้เลย
-      });
-    });
-  });
-</script>
 <script src="script.js"></script>
   
 </body>
