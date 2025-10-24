@@ -58,7 +58,7 @@ document.querySelectorAll(".subscribeBase").forEach(btn => {
       })
       .catch(err => {
         console.error("ส่งข้อความไม่สำเร็จ:", err);
-        alert("เกิดข้อผิดพลาด: " + err.message);
+        //alert("เกิดข้อผิดพลาด: " + err.message);
       });
   });
 });
@@ -84,7 +84,7 @@ document.getElementById("exclusiveBtn").addEventListener("click", () => {
     })
     .catch(err => {
       console.error("ส่งข้อความไม่สำเร็จ:", err);
-      alert("เกิดข้อผิดพลาด: " + err.message);
+      //alert("เกิดข้อผิดพลาด: " + err.message);
     });
 });
 
