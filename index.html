@@ -1249,52 +1249,6 @@ InginiaOS จะให้ Mood & Tone, Reference, Visual Idea ที่ proven �
     display: block !important;
   }
 </style>
-	<!-- 🔴 PATCH: .cta-line (fixed timing & detection) -->
-<script>
-(function () {
-  var LIFF_ID = "2007908663-NawZjDxL";
-  var OA_BASIC_ID = "@717xokfa";
-  var LINE_ADD_FRIEND_URL = "https://line.me/R/ti/p/" + encodeURIComponent(OA_BASIC_ID);
-
-  function isLineAppUA(){
-    return /Line\/|LIFF/i.test(navigator.userAgent);
-  }
-
-  function attachRedirectGuard(inLiff){
-    // ใช้ capture = true แต่จะ redirect เฉพาะกรณี "ไม่ใช่ LIFF" เท่านั้น
-    document.addEventListener("click", function (e) {
-      var btn = e.target.closest(".cta-line");
-      if (!btn) return;
-
-      if (!inLiff) {
-        // โหมดเบราว์เซอร์ทั่วไป → ส่งไป Add Friend
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        window.location.href = LINE_ADD_FRIEND_URL;
-      }
-      // ถ้า inLiff = true → ไม่แตะต้อง ให้ script.js เดิมจัดการต่อได้ตามปกติ
-    }, true);
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    if (window.liff && typeof window.liff.init === "function") {
-      window.liff.init({ liffId: LIFF_ID })
-        .then(function () {
-          // ตัดสินใจหลัง init เสร็จ + เผื่อ UA fallback
-          var inLiff = window.liff.isInClient() || isLineAppUA();
-          attachRedirectGuard(inLiff);
-        })
-        .catch(function () {
-          // init ไม่ผ่าน → ถือว่าอยู่เว็บปกติ
-          attachRedirectGuard(false);
-        });
-    } else {
-      // ไม่มี LIFF SDK → ถือว่าเว็บปกติ
-      attachRedirectGuard(false);
-    }
-  });
-})();
-</script>
 
 <script src="script.js"></script>
   
