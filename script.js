@@ -140,62 +140,53 @@ stageBlocks.forEach(block => {
 document.querySelector('[data-stage="stage3"]').classList.add('active');
 document.getElementById('stage3').style.display = 'block';
 
-/* === LIFF BRIDGE (SAFE) – START ===
+/* === LIFF BRIDGE (BULLETPROOF) – START ===
    - เบราว์เซอร์ปกติ: 4 ปุ่มจะพาไปหน้า Add Friend ของ LINE OA
-   - เปิดในแอป LINE (LIFF): ไม่แตะต้อง → ให้โค้ดเดิมส่งข้อความ/ทำงานต่อได้ตามปกติ
-   - ไม่มี alert/confirm ฝั่งเว็บ เพื่อลดโอกาสโดนธง security
+   - เปิดในแอป LINE (LIFF): ไม่แตะต้อง → ให้โค้ดเดิมของคุณทำงานต่อ (sendMessages ฯลฯ)
+   - ไม่มี alert/confirm ฝั่งเว็บ
 === */
 (function () {
-  var LIFF_ID = "2007908663-NawZjDxL";
-  var OA_BASIC_ID = "@717xokfa";
-
+  var OA_BASIC_ID = "@717xokfa"; // <-- ใช้ OA ของคุณ
   var LINE_ADD_FRIEND_URL = "https://line.me/R/ti/p/" + encodeURIComponent(OA_BASIC_ID);
 
-  // ปุ่มเป้าหมาย 4 ปุ่ม
-  var selectors = [
-    ".subscribeBase", // 2 ปุ่ม: .cta-buy.subscribeBase, .plan-cta.subscribeBase
-    "#requestQuote",  // ขอใบเสนอราคา
-    "#exclusiveBtn"   // รับสิทธิ์ Founding 10
-  ];
+  // ปุ่มเป้าหมาย 4 ปุ่ม (อย่าลืมว่ามีทั้ง .subscribeBase และ 2 id)
+  var SELECTORS = ".subscribeBase, #requestQuote, #exclusiveBtn";
 
-  var inLiff = false;
-  var attached = false;
-
-  function attachHandlers() {
-    if (attached) return;
-    attached = true;
-
-    // ใช้ event delegation แบบ capture = true เพื่อ “ขวาง” handler อื่นเมื่ออยู่นอก LIFF
-    document.addEventListener("click", function (ev) {
-      var btn = ev.target.closest(selectors.join(","));
-      if (!btn) return;
-
-      if (!inLiff) {
-        // นอก LIFF → พาไป Add Friend และ “หยุด” handler อื่น ๆ ของปุ่มนี้
-        ev.preventDefault();
-        ev.stopImmediatePropagation();
-        ev.stopPropagation();
-        window.location.href = LINE_ADD_FRIEND_URL;
-      }
-      // ใน LIFF → ไม่แตะต้อง ให้ handler เดิม (sendMessages ฯลฯ) ทำงานต่อ
-    }, true);
+  // อยู่ใน LINE app (LIFF) หรือไม่ — ไม่ต้อง init, พอแค่นี้
+  function isInsideLiff() {
+    try {
+      return !!(window.liff && typeof window.liff.isInClient === "function" && window.liff.isInClient());
+    } catch (e) {
+      return false;
+    }
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    if (window.liff && typeof window.liff.init === "function") {
-      window.liff.init({ liffId: LIFF_ID })
-        .then(function () {
-          inLiff = !!window.liff.isInClient();
-          attachHandlers();
-        })
-        .catch(function () {
-          inLiff = false;
-          attachHandlers();
-        });
-    } else {
-      inLiff = false;
-      attachHandlers();
+  // ดักคลิก “แบบ capture” เพื่อขวาง handler อื่นเมื่ออยู่นอก LIFF
+  function onClickCapture(e) {
+    var btn = e.target.closest(SELECTORS);
+    if (!btn) return;
+
+    if (!isInsideLiff()) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      e.stopPropagation();
+      window.location.href = LINE_ADD_FRIEND_URL;
     }
-  });
+    // ถ้าอยู่ใน LIFF → ไม่ทำอะไร ปล่อยให้ handler เดิมของคุณทำงาน
+  }
+
+  document.addEventListener("click", onClickCapture, true);
+
+  // เผื่อผู้ใช้กด Enter/Space บนปุ่มด้วยคีย์บอร์ด
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    var el = document.activeElement;
+    if (!el || !el.matches || !el.matches(SELECTORS)) return;
+
+    if (!isInsideLiff()) {
+      e.preventDefault();
+      window.location.href = LINE_ADD_FRIEND_URL;
+    }
+  }, true);
 })();
- /* === LIFF BRIDGE (SAFE) – END === */
+/* === LIFF BRIDGE (BULLETPROOF) – END === */
