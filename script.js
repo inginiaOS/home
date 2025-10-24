@@ -140,53 +140,77 @@ stageBlocks.forEach(block => {
 document.querySelector('[data-stage="stage3"]').classList.add('active');
 document.getElementById('stage3').style.display = 'block';
 
-/* === LIFF BRIDGE (BULLETPROOF) – START ===
-   - เบราว์เซอร์ปกติ: 4 ปุ่มจะพาไปหน้า Add Friend ของ LINE OA
-   - เปิดในแอป LINE (LIFF): ไม่แตะต้อง → ให้โค้ดเดิมของคุณทำงานต่อ (sendMessages ฯลฯ)
-   - ไม่มี alert/confirm ฝั่งเว็บ
+/* === LIFF BRIDGE (SAFE) – START ===
+   วางโค้ดนี้ "บรรทัดสุดท้าย" ของไฟล์ script.js ได้เลย
+   - ถ้าเปิดผ่านเบราว์เซอร์ปกติ: ปุ่ม 4 ปุ่มจะพาไปเพิ่มเพื่อน LINE OA
+   - ถ้าเปิดในแอป LINE (LIFF): ไม่แตะต้องลอจิกเดิม ให้ระบบเดิมทำงานต่อ
+   - ไม่มี alert/confirm เพื่อเลี่ยงธง security
 === */
+
 (function () {
-  var OA_BASIC_ID = "@717xokfa"; // <-- ใช้ OA ของคุณ
+  // ✅ ใช้ค่าเดียวกับที่คุณให้ไว้
+  var LIFF_ID = "2007908663-NawZjDxL";
+  var OA_BASIC_ID = "@717xokfa";
+
   var LINE_ADD_FRIEND_URL = "https://line.me/R/ti/p/" + encodeURIComponent(OA_BASIC_ID);
+  var LIFF_URL = "https://liff.line.me/" + LIFF_ID;
 
-  // ปุ่มเป้าหมาย 4 ปุ่ม (อย่าลืมว่ามีทั้ง .subscribeBase และ 2 id)
-  var SELECTORS = ".subscribeBase, #requestQuote, #exclusiveBtn";
+  // รายชื่อปุ่มที่ต้องพาเข้า LINE
+  var selectors = [
+    ".subscribeBase",     // 2 ปุ่ม: .cta-buy.subscribeBase และ .plan-cta.subscribeBase
+    "#requestQuote",      // ปุ่ม: ขอใบเสนอราคา
+    "#exclusiveBtn"       // ปุ่ม: รับสิทธิ์ Founding 10
+  ];
 
-  // อยู่ใน LINE app (LIFF) หรือไม่ — ไม่ต้อง init, พอแค่นี้
-  function isInsideLiff() {
-    try {
-      return !!(window.liff && typeof window.liff.isInClient === "function" && window.liff.isInClient());
-    } catch (e) {
-      return false;
-    }
+  // ตรวจสถานะ LIFF แบบปลอดภัย
+  var inLiff = false;
+  var ready = false;
+
+  function attachHandlers() {
+    if (ready) return;
+    ready = true;
+
+    // bind คลิกให้ 4 ปุ่ม
+    selectors.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (btn) {
+        // ป้องกันการ bind ซ้ำหากมี re-render
+        if (btn.__liffBridgeBound) return;
+        btn.__liffBridgeBound = true;
+
+        btn.addEventListener("click", function (ev) {
+          // ถ้าไม่ใช่ LIFF (เปิดด้วย Chrome/Safari ปกติ) → พาไปเพิ่มเพื่อน LINE
+          if (!inLiff) {
+            ev.preventDefault();
+            // แนะนำ: ถ้าอยากเปิด LIFF ทันทีหลังแอดเพื่อนเสร็จ ให้ผู้ใช้กด back แล้วมากดปุ่มอีกครั้ง
+            // เพื่อหลีกเลี่ยงพฤติกรรมที่ดูคล้าย phishing เราจะพาไปหน้า Add Friend ตรง ๆ
+            window.location.href = LINE_ADD_FRIEND_URL;
+          }
+          // ถ้าเป็น LIFF (ในแอป LINE) → ไม่ยุ่งกับลอจิกเดิมของคุณ
+        }, false);
+      });
+    });
   }
 
-  // ดักคลิก “แบบ capture” เพื่อขวาง handler อื่นเมื่ออยู่นอก LIFF
-  function onClickCapture(e) {
-    var btn = e.target.closest(SELECTORS);
-    if (!btn) return;
-
-    if (!isInsideLiff()) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      e.stopPropagation();
-      window.location.href = LINE_ADD_FRIEND_URL;
+  // เริ่มทำงานเมื่อ DOM พร้อม
+  document.addEventListener("DOMContentLoaded", function () {
+    // พยายาม init LIFF แบบไม่ทำให้เว็บล่ม หากล้มเหลือให้ถือว่าไม่ใช่ LIFF
+    if (window.liff && typeof window.liff.init === "function") {
+      window.liff.init({ liffId: LIFF_ID })
+        .then(function () {
+          // อยู่ในแอป LINE จริง ๆ หรือไม่
+          inLiff = !!window.liff.isInClient();
+          attachHandlers();
+        })
+        .catch(function () {
+          inLiff = false;
+          attachHandlers();
+        });
+    } else {
+      // ไม่มี LIFF object → เบราว์เซอร์ปกติ
+      inLiff = false;
+      attachHandlers();
     }
-    // ถ้าอยู่ใน LIFF → ไม่ทำอะไร ปล่อยให้ handler เดิมของคุณทำงาน
-  }
-
-  document.addEventListener("click", onClickCapture, true);
-
-  // เผื่อผู้ใช้กด Enter/Space บนปุ่มด้วยคีย์บอร์ด
-  document.addEventListener("keydown", function (e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    var el = document.activeElement;
-    if (!el || !el.matches || !el.matches(SELECTORS)) return;
-
-    if (!isInsideLiff()) {
-      e.preventDefault();
-      window.location.href = LINE_ADD_FRIEND_URL;
-    }
-  }, true);
+  });
 })();
-/* === LIFF BRIDGE (BULLETPROOF) – END === */
+
+/* === LIFF BRIDGE (SAFE) – END === */
