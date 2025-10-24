@@ -1249,39 +1249,53 @@ InginiaOS จะให้ Mood & Tone, Reference, Visual Idea ที่ proven �
     display: block !important;
   }
 </style>
-	<!-- PATCH: handle .cta-line clicks (วางท้ายสุดของไฟล์/หน้า) -->
+	<!-- 🔴 PATCH: .cta-line (fixed timing & detection) -->
 <script>
 (function () {
   var LIFF_ID = "2007908663-NawZjDxL";
   var OA_BASIC_ID = "@717xokfa";
   var LINE_ADD_FRIEND_URL = "https://line.me/R/ti/p/" + encodeURIComponent(OA_BASIC_ID);
 
-  var inLiff = false;
+  function isLineAppUA(){
+    return /Line\/|LIFF/i.test(navigator.userAgent);
+  }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    // ลอง init LIFF ถ้ามี (เพื่อรู้ว่าอยู่ใน LIFF หรือไม่)
-    if (window.liff && typeof window.liff.init === "function") {
-      window.liff.init({ liffId: LIFF_ID })
-        .then(function () { inLiff = window.liff.isInClient(); })
-        .catch(function () { inLiff = false; });
-    }
-
-    // ใช้ event delegation จับทุกปุ่มที่มี .cta-line
+  function attachRedirectGuard(inLiff){
+    // ใช้ capture = true แต่จะ redirect เฉพาะกรณี "ไม่ใช่ LIFF" เท่านั้น
     document.addEventListener("click", function (e) {
       var btn = e.target.closest(".cta-line");
       if (!btn) return;
 
-      // ถ้า "ไม่" อยู่ใน LIFF -> ส่งผู้ใช้ไปหน้า Add Friend
       if (!inLiff) {
+        // โหมดเบราว์เซอร์ทั่วไป → ส่งไป Add Friend
         e.preventDefault();
-        e.stopImmediatePropagation(); // กัน handler อื่น (เช่นที่ยังเหลือ alert) ไม่ให้ยิงซ้ำ
+        e.stopImmediatePropagation();
         window.location.href = LINE_ADD_FRIEND_URL;
       }
-      // ถ้าอยู่ใน LIFF → ปล่อยให้โค้ดเดิม (sendMessages ฯลฯ) ทำงานตามปกติ
-    }, true); // ใช้ capture เพื่อให้ชนะ handler อื่น ๆ ที่ผูกไว้ก่อนหน้า
+      // ถ้า inLiff = true → ไม่แตะต้อง ให้ script.js เดิมจัดการต่อได้ตามปกติ
+    }, true);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.liff && typeof window.liff.init === "function") {
+      window.liff.init({ liffId: LIFF_ID })
+        .then(function () {
+          // ตัดสินใจหลัง init เสร็จ + เผื่อ UA fallback
+          var inLiff = window.liff.isInClient() || isLineAppUA();
+          attachRedirectGuard(inLiff);
+        })
+        .catch(function () {
+          // init ไม่ผ่าน → ถือว่าอยู่เว็บปกติ
+          attachRedirectGuard(false);
+        });
+    } else {
+      // ไม่มี LIFF SDK → ถือว่าเว็บปกติ
+      attachRedirectGuard(false);
+    }
   });
 })();
 </script>
+
 <script src="script.js"></script>
   
 </body>
