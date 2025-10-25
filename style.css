@@ -986,15 +986,3 @@ body.intro-hide #closing { display:block !important; opacity:1 !important; }
 #fit-who .fw-card p{
   margin:0; color:#d6d6d6; line-height:1.65;
 }
-/* 🔒 ล็อคหน้าจอไม่ให้เลื่อนแนวนอน */
-html, body {
-  overflow-x: hidden !important;
-  width: 100%;
-  max-width: 100%;
-  position: relative;
-}
-
-/* เผื่อกรณี element ภายในล้นออกข้าง */
-* {
-  box-sizing: border-box;
-}
