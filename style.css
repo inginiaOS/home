@@ -2231,3 +2231,340 @@ body.intro-hide #intro{
   body.intro-hide #intro{ padding-bottom: 110px !important; }
 }
 /* === end overrides === */
+/* ——— Hero Hook Callout ——— */
+.hook-callout{
+  --glow: rgba(0,255,136,.25);
+  --line: #00ff88;
+  --ink:  #eaeaea;
+  display:grid; gap:.35rem; place-items:center;
+  padding:16px 20px;
+  margin:16px auto 0;
+  max-width:920px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgba(0,255,136,.08), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.2));
+  box-shadow: 0 8px 28px rgba(0,0,0,.35), 0 0 0 6px rgba(0,255,136,.04);
+  text-align:center;
+}
+
+.hook-badge{
+  display:inline-block;
+  font-size:.78rem; letter-spacing:.3px; font-weight:700;
+  color:#000; background:linear-gradient(90deg,#00ff88,#00e0ff);
+  border-radius:999px; padding:.28rem .7rem; user-select:none;
+}
+
+.hook-title{
+  font-size: clamp(.95rem, 1.8vw, 1.1rem);
+  color: #cfcfcf; opacity:.95;
+}
+
+.hook-question{
+  font-weight:900;
+  font-size: clamp(1.05rem, 2.8vw, 1.45rem);
+  line-height:1.25;
+  background: linear-gradient(90deg,#00ff88 0%,#00e0ff 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  position:relative;
+}
+.hook-question::after{
+  content:"";
+  display:block; height:2px; width:0%;
+  margin:.45rem auto 0;
+  background:linear-gradient(90deg,#00ff88,#00e0ff);
+  box-shadow: 0 0 16px var(--glow);
+  animation: hookLine 1.6s ease forwards .2s;
+}
+
+.hook-sub{
+  color: var(--ink); opacity:.9;
+  font-size: clamp(.92rem, 1.8vw, 1.05rem);
+}
+
+.hook-closer{
+  margin-top:.7rem;
+  font-weight:700; color:#bfbfbf;
+  text-align:center;
+}
+
+/* subtle appear */
+@keyframes hookLine{ to{ width:68%; } }
+
+@media (max-width:560px){
+  .hook-callout{ padding:14px 14px; border-radius:14px; }
+  .hook-question::after{ width:78%; } /* ให้เส้นใต้ยาวขึ้นบนมือถือ */
+}
+/* ===== Compound Growth Section ===== */
+.compound-growth {
+  padding: 80px 0;
+  text-align: center;
+  background: radial-gradient(100% 120% at 50% 0%, rgba(0,255,136,.06), rgba(0,224,255,.03));
+  border-top: 1px solid rgba(0,255,136,.08);
+  border-bottom: 1px solid rgba(0,255,136,.08);
+}
+
+.compound-growth h2.h2-grad {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  background: linear-gradient(90deg, #00ff88, #00e0ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+
+.compound-growth p {
+  color: #d8d8d8;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+}
+
+.compound-growth ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 2rem;
+  max-width: 700px;
+}
+
+.compound-growth ul li {
+  color: #e0e0e0;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(0,255,136,0.08);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.compound-growth ul li:hover {
+  background: rgba(0,255,136,0.06);
+  border-color: rgba(0,255,136,0.25);
+}
+
+.compound-growth strong {
+  color: #00ff88;
+}
+
+.compound-growth h1, 
+.compound-growth h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 2.2rem 0 1rem;
+  color: #00e0ff;
+}
+
+.compound-growth h1 strong {
+  color: #00ff88;
+}
+
+.compound-growth h1:last-of-type {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #e8e8e8;
+  line-height: 1.8;
+  margin-top: 2.5rem;
+}
+
+.compound-growth h1:last-of-type strong {
+  font-weight: 800;
+  color: #00ff88;
+  text-shadow: 0 0 12px rgba(0,255,136,.4);
+}
+
+@media (max-width: 768px) {
+  .compound-growth {
+    padding: 60px 0;
+  }
+  .compound-growth p {
+    font-size: 1rem;
+  }
+  .compound-growth ul li {
+    font-size: .95rem;
+  }
+}
+/* ===== Hook Zone (ไม่ต้องเปลี่ยน HTML) ===== */
+.hook-closer {
+  /* แถบประโยคเปิดที่ “ดูแพง” แต่ไม่ใช่กล่อง */
+  position: relative;
+  margin: 28px auto 16px;
+  max-width: 920px;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: .2px;
+  line-height: 1.45;
+  background: linear-gradient(90deg,#00ff88,#00e0ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+/* เส้นเน้นวิ่งเบา ๆ ใต้ประโยค (ไม่ต้องใช้ JS) */
+.hook-closer::after{
+  content:"";
+  display:block;
+  height:2px;
+  width: 86px;
+  margin: 10px auto 0;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, rgba(0,255,136,.0), rgba(0,255,136,.7), rgba(0,224,255,.0));
+  animation: sweep 2.4s ease-in-out infinite;
+  opacity:.9;
+}
+@keyframes sweep{
+  0%,100% { transform: translateX(-18px); }
+  50%     { transform: translateX(18px); }
+}
+
+/* ย่อหน้าหลักที่ตามหลัง hook-closer: ทำเป็น “แถบผู้นำสายตา” ไม่ใช่กล่อง */
+.hook-closer + p,
+.hook-closer + p + p,
+.hook-closer + p + p + p {
+  max-width: 880px;
+  margin: 14px auto;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: #e6e6e6;
+  position: relative;
+  padding-left: 18px;         /* เว้นให้เส้นซ้าย */
+  background: linear-gradient(90deg, rgba(0,255,136,.04), rgba(0,224,255,.03));
+  border-left: 3px solid rgba(0,255,136,.45);   /* เส้นเน้นซ้าย */
+  border-radius: 10px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  transition: border-color .25s ease, background .25s ease;
+}
+.hook-closer + p:hover,
+.hook-closer + p + p:hover,
+.hook-closer + p + p + p:hover {
+  border-left-color: rgba(0,255,136,.8);
+  background: linear-gradient(90deg, rgba(0,255,136,.08), rgba(0,224,255,.05));
+}
+
+/* ทำให้ <strong> และ <mark> ในบล็อกนี้ เด่นแบบ “หมึกไฮไลต์” */
+.hook-closer + p strong,
+.hook-closer + p + p strong,
+.hook-closer + p + p + p strong {
+  color: #00ff88;
+  font-weight: 800;
+}
+.hook-closer + p mark,
+.hook-closer + p + p mark,
+.hook-closer + p + p + p mark {
+  background: linear-gradient(transparent 55%, rgba(0,255,136,.28) 55%);
+  color: inherit;
+  padding: 0 .1em;
+  border-radius: 2px;
+}
+
+/* ข้อความ “เลื่อนอ่านต่อ” → ทำเป็นเคอร์เซอร์ชี้นำสายตา */
+.hook-closer + p + p + p em,
+.hook-closer + p + p + p u {
+  text-decoration: none;
+  position: relative;
+  padding-right: 18px;
+}
+.hook-closer + p + p + p em::after,
+.hook-closer + p + p + p u::after{
+  content:"→";
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: .85;
+}
+
+/* รองรับจอเล็ก */
+@media (max-width: 768px){
+  .hook-closer { margin: 22px auto 10px; }
+  .hook-closer + p,
+  .hook-closer + p + p,
+  .hook-closer + p + p + p {
+    margin: 12px auto;
+    font-size: 1rem;
+    padding-left: 14px;
+  }
+}
+/* ===== Warning Box (เหลือง-ดำแบบมีพื้นหลังรองรับ) ===== */
+.hook-warning-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto 24px;
+  width: 100%;
+  max-width: 920px;
+}
+
+.hook-warning-bg {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  padding: 18px 28px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #000;
+  background-color: #ffcc00;
+  border-radius: 8px;
+  box-shadow: 0 6px 22px rgba(255, 204, 0, 0.25);
+  overflow: hidden;
+}
+
+/* ลายเทปเหลืองดำแบบแถบเฉียง */
+.hook-warning-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    #000,
+    #000 12px,
+    #ffcc00 12px,
+    #ffcc00 24px
+  );
+  opacity: 0.25;
+  z-index: 0;
+}
+
+/* ให้ข้อความลอยอยู่บนลายเทป */
+.hook-warning-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.hook-warning-bg span,
+.hook-warning-bg {
+  position: relative;
+  z-index: 2;
+}
+
+/* เอฟเฟกต์เตือนเบา ๆ กระพริบแสง */
+@keyframes warningPulse {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(255, 204, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255, 204, 0, 0.7);
+  }
+}
+
+.hook-warning-bg {
+  animation: warningPulse 3s infinite ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .hook-warning-bg {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+  }
+}
