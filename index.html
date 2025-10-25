@@ -1413,7 +1413,59 @@
   /* ---------- 11) FAQ (#faq) — ไม่แตะต้อง ---------- */
 })();
 </script>
+<script>
+/* === Hard-fix เฉพาะปุ่มฮีโร่ (#top .cta-buy.subscribeBase.cta-line) === */
+(function () {
+  var OA_BASIC_ID = "@717xokfa";
+  var LINE_ADD_FRIEND_URL = "https://line.me/R/ti/p/" + encodeURIComponent(OA_BASIC_ID);
 
+  function isInLiffNow() {
+    try { return !!(window.liff && typeof liff.isInClient === 'function' && liff.isInClient()); }
+    catch (e) { return false; }
+  }
+
+  function sendOrRedirect(text) {
+    if (isInLiffNow()) {
+      try {
+        return liff.sendMessages([{ type: "text", text }])
+          .then(function(){ alert("ส่งข้อความสำเร็จ ✅ ทีมงานจะติดต่อกลับ"); })
+          .catch(function(){ window.location.href = LINE_ADD_FRIEND_URL; });
+      } catch (e) {
+        window.location.href = LINE_ADD_FRIEND_URL;
+      }
+    } else {
+      window.location.href = LINE_ADD_FRIEND_URL;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var orig = document.querySelector('#top .cta-buy.subscribeBase');
+    if (!orig) return;
+
+    /* 1) ถอด listener เก่าทั้งหมดโดยการ clone (เก็บ attribute/คลาส/ข้อความเดิมครบ) */
+    var btn = orig.cloneNode(true);
+    orig.replaceWith(btn);
+
+    /* 2) ใส่ handler ใหม่เฉพาะปุ่มนี้ (capture=true เพื่อชนะตัวดักระดับ document) */
+    if (btn.__heroBind) return;
+    btn.__heroBind = true;
+
+    btn.addEventListener('click', function (e) {
+      /* กัน handler อื่นทุกตัว (เฉพาะคลิกนี้) */
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
+      var basePlan = "InginiaOS Starter (8,800฿ / เดือน)";
+      var text = "ฉันสนใจแพ็กเกจหลัก:\n" + basePlan;
+      sendOrRedirect(text);
+    }, true); // capture = true
+
+    /* 3) กันถูก “ดักไว้ก่อนถึงปุ่ม” (เช่น overlay listeners) */
+    btn.style.pointerEvents = 'auto';
+  });
+})();
+</script>
 
 </body>
 </html>
