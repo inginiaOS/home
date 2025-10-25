@@ -2568,3 +2568,212 @@ body.intro-hide #intro{
     font-size: 0.9rem;
   }
 }
+/* ================================
+   HERO UPGRADE (append-only)
+   Scope: #top (ไม่กระทบส่วนอื่น)
+   ================================ */
+
+/* โครงหลัก + spacing */
+#top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(48px, 8vh, 96px) 20px;
+  text-align: center;
+}
+
+/* ลำดับตัวอักษรให้ชัด (H1 > H2 > P) */
+#top .h1-grad, 
+#top h1:first-of-type {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.75em 0;
+}
+
+#top h1 + h1 {
+  /* หัวข้อบรรทัดสอง (ยังเป็น h1 ตามโครงเดิม) */
+  font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 1.1em 0;
+  opacity: 0.95;
+}
+
+#top h2 {
+  font-size: clamp(1.05rem, 2.4vw, 1.5rem);
+  font-weight: 400;
+  color: #cfcfcf;
+  line-height: 1.6;
+  max-width: 860px;
+  margin: 0 auto 1.75em;
+}
+
+/* ย่อหน้าภาพรวม */
+#top > p {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.85;
+  color: #b8b8b8;
+  max-width: 760px;
+  margin: 0 auto 2.25em;
+}
+
+/* ไฮไลต์คำสำคัญด้วย gradient เฉพาะใน hero */
+#top strong {
+  background: linear-gradient(90deg, #00ff88 0%, #00cc88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* กลุ่มบับเบิลให้โปร่งและเป็นกริดปรับได้ */
+#top .hero-bubbles {
+  margin: 2.25rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  max-width: 980px;
+}
+
+#top .hero-bubble {
+  flex: 1 1 clamp(240px, 42%, 460px); /* 2 คอลัมน์บนจอใหญ่, 1 คอลัมน์บนจอแคบ */
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  transition: transform .25s ease, background-color .25s ease, border-color .25s ease;
+}
+
+#top .hero-bubble:hover {
+  transform: translateY(-4px);
+  background: rgba(0, 255, 136, 0.08);
+  border-color: #00ff88;
+}
+
+#top .hero-emoji {
+  font-size: 1.25rem;
+  filter: drop-shadow(0 2px 8px rgba(0,255,136,.25));
+}
+
+#top .hero-bubble-text {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #eaeaea;
+}
+
+/* คำคม (ถ้ามี blockquote ภายใน hero จะสวยขึ้น แต่ไม่บังคับ) */
+#top blockquote,
+#top .hero-quote {
+  max-width: 760px;
+  margin: 2.25rem auto 0;
+  padding-left: 14px;
+  border-left: 3px solid #00ff88;
+  color: #bbbbbb;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* CTA ให้เด่นขึ้นเล็กน้อยแต่ยังใช้คลาสเดิม */
+#top .cta-buy {
+  margin-top: 1.25rem;
+  padding: 14px 24px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0,255,136,.18);
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+#top .cta-buy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 38px rgba(0,255,136,.28);
+  opacity: .98;
+}
+
+/* ระยะหายใจด้านล่าง hero ก่อนเข้า divider */
+#top + .divider {
+  margin-top: clamp(28px, 6vh, 56px);
+}
+
+/* ลด motion สำหรับผู้ใช้ที่ตั้งค่าไว้ */
+@media (prefers-reduced-motion: reduce) {
+  #top .hero-bubble,
+  #top .cta-buy {
+    transition: none !important;
+  }
+}
+
+/* ปรับบนจอเล็กให้ไม่แน่น */
+@media (max-width: 640px) {
+  #top {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+  #top .hero-bubbles {
+    gap: 12px;
+    margin-top: 1.75rem;
+  }
+  #top .hero-bubble {
+    padding: 12px 14px;
+  }
+  #top h1 + h1 {
+    margin-bottom: 1rem;
+  }
+}
+/* ==========================
+   CTA + Warning Spacing Fix
+   ========================== */
+
+/* ลดช่องว่างด้านล่างของ CTA */
+#top .cta-buy {
+  margin-bottom: 24px !important; /* เดิมอาจมี 60px+ */
+  padding: 16px 32px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  border-radius: 999px;
+  color: #000;
+  background: linear-gradient(135deg, #00ff88 0%, #00b8ff 100%);
+  box-shadow: 0 10px 40px rgba(0,255,136,0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+/* เพิ่มความรู้สึก "คลิกได้" ด้วย hover effect */
+#top .cta-buy:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 16px 50px rgba(0,255,136,0.35);
+  filter: brightness(1.05);
+}
+
+/* ปรับให้มี glow อ่อนๆ เวลาชี้ */
+#top .cta-buy:focus,
+#top .cta-buy:active {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,255,136,0.4);
+}
+
+/* ==========================
+   ระยะระหว่าง CTA → Section ถัดไป (คำเตือน)
+   ========================== */
+
+/* ลดช่องว่างบนสุดของ section ถัดไป */
+section.hook-warning {
+  margin-top: 0 !important;
+  padding-top: 12px;
+}
+
+/* เผื่อบางกรณีที่ใช้ .divider แทรก */
+.divider {
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
+
+/* ถ้ามี box เตือน (เหลืองดำ) */
+.hook-warning-bg {
+  margin-top: 12px !important;
+}
