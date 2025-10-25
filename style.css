@@ -986,3 +986,11 @@ body.intro-hide #closing { display:block !important; opacity:1 !important; }
 #fit-who .fw-card p{
   margin:0; color:#d6d6d6; line-height:1.65;
 }
+/* 🔒 กันเลื่อนซ้าย-ขวา แบบไม่กวน AOS */
+html { overflow-x: clip; }         /* ตัวเลือกหลัก: ไม่สร้าง scroll เลยแต่ไม่กระทบ layout */
+body { overflow-x: visible; }      /* ปล่อย body ไว้ปกติ */
+
+/* fallback ถ้าเบราว์เซอร์ไม่รองรับ clip */
+@supports not (overflow: clip) {
+  html { overflow-x: hidden; }
+}
