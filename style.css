@@ -994,3 +994,147 @@ body { overflow-x: visible; }      /* ปล่อย body ไว้ปกติ
 @supports not (overflow: clip) {
   html { overflow-x: hidden; }
 }
+/* ===== Intro (Narrative) — Accent & Readability ===== */
+#intro .hook-txt {
+  margin: 18px auto;
+  max-width: 920px;
+  line-height: 1.85;
+  font-size: clamp(1.06rem, 0.98rem + 0.4vw, 1.22rem);
+  color: #e6e6e6;
+}
+
+#intro .hook-txt strong {
+  font-weight: 700;
+  background: linear-gradient(90deg, #00ff88 0%, #00e0ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;               /* ทำให้ strong เป็นตัวอักษรไล่สี */
+}
+
+#intro .hook-txt em {
+  font-style: normal;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(0,255,136,0.12), rgba(0,224,255,0.12));
+  border: 1px solid rgba(0,255,136,0.35);
+  white-space: nowrap;
+}
+
+/* Call-to-Action ที่ชวนเลื่อนอ่านต่อ */
+#intro .hook-cta {
+  margin: 26px auto 0;
+  max-width: 920px;
+  line-height: 1.9;
+  font-size: clamp(1.08rem, 1rem + 0.5vw, 1.28rem);
+  font-weight: 700;
+  color: #ffffff;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 120% at 10% 20%, rgba(0,224,255,0.15), transparent 60%),
+    radial-gradient(120% 120% at 90% 80%, rgba(0,255,136,0.18), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(0,255,136,0.35);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+/* เส้นไฮไลต์คำว่า “เลื่อนลงมา” ให้เด้งตาแบบไม่รก */
+#intro .hook-cta-line {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+#intro .hook-cta-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, rgba(0,255,136,0.35), rgba(0,224,255,0.35));
+  border-radius: 8px;
+  transform: translateY(6px);
+  filter: blur(1px);
+  animation: hookUnderline 1.8s ease-in-out infinite;
+}
+
+/* ลูกศรชวนเลื่อนแบบละมุน ๆ ที่มุมกล่อง CTA */
+#intro .hook-cta::before {
+  content: "↓";
+  position: absolute;
+  right: 14px;
+  bottom: 10px;
+  font-size: 1.25rem;
+  opacity: 0.7;
+  transform: translateY(0);
+  animation: nudgeDown 1.2s ease-in-out infinite;
+}
+
+/* ระยะห่างเล็กน้อยเหนือบล็อก (แทน <p class="hook-closer"></p> ที่เว้นช่อง) */
+#intro .hook-closer {
+  margin: 6px 0 10px;
+}
+
+/* เอฟเฟกต์นุ่มนวล ไม่ชนกับ AOS */
+@keyframes hookUnderline {
+  0%, 100% { transform: translateY(6px); opacity: 0.8; }
+  50%      { transform: translateY(2px); opacity: 1; }
+}
+
+@keyframes nudgeDown {
+  0%, 100% { transform: translateY(0);   opacity: 0.75; }
+  50%      { transform: translateY(4px); opacity: 1;    }
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  #intro .hook-txt { line-height: 1.8; }
+  #intro .hook-cta { padding: 14px 16px; }
+}
+/* WHAT YOU GET – stacked title/desc cards */
+#solution .wyg-list{
+  display:grid;
+  gap:18px;
+  max-width: 980px;
+  margin: 22px auto 0;
+}
+#solution .wyg-item{
+  position: relative;
+  background: rgba(10,10,10,.55);
+  border: 1px solid rgba(0,255,160,.25);
+  border-radius: 16px;
+  padding: 18px 20px 16px 58px;
+  box-shadow: inset 0 0 0 1px rgba(0,255,160,.06), 0 10px 24px rgba(0,0,0,.25);
+  backdrop-filter: blur(4px);
+}
+#solution .wyg-item::before{
+  content:"✓";
+  position:absolute; left:16px; top:18px;
+  width:28px; height:28px; line-height:28px; text-align:center;
+  border-radius:999px; font-weight:700;
+  color:#00150f; background: radial-gradient(100% 100% at 50% 50%, #00ffb0 0%, #00e0ff 100%);
+  box-shadow: 0 0 18px rgba(0,255,160,.55);
+}
+#solution .wyg-title{
+  margin: 0 0 6px 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #aefbea; /* เขียวอ่อนอ่านง่ายบนพื้นมืด */
+}
+#solution .wyg-desc{
+  margin: 0;
+  color: #cdd6d4;
+  line-height: 1.7;
+  font-size: 1.02rem;
+}
+#solution em{ font-style: normal; color:#a4f5ff; }
+#solution strong{ color:#00ffb0; font-weight: 800; }
+
+@media (max-width: 720px){
+  #solution .wyg-item{ padding:16px 16px 14px 54px; }
+  #solution .wyg-title{ font-size:1.05rem; }
+  #solution .wyg-desc{ font-size: .98rem; }
+}
