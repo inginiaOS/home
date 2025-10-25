@@ -986,15 +986,4 @@ body.intro-hide #closing { display:block !important; opacity:1 !important; }
 #fit-who .fw-card p{
   margin:0; color:#d6d6d6; line-height:1.65;
 }
-/* --- HERO CTA ALWAYS CLICKABLE --- */
-#top { position: relative; z-index: 5; }
-#top .cta-buy.subscribeBase {
-  position: relative;
-  z-index: 6;           /* อยู่เหนือ elements ที่อาจมี transform/overlay */
-  pointer-events: auto; /* บังคับรับคลิกแน่ๆ */
-}
 
-/* ถ้ารูป header ก่อน hero เคยกินคลิก ให้ปิดรับคลิกเฉพาะรูปนั้น */
-img[alt="Untitled-6-copy"] {
-  pointer-events: none;
-}
