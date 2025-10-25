@@ -986,3 +986,17 @@ body.intro-hide #closing { display:block !important; opacity:1 !important; }
 #fit-who .fw-card p{
   margin:0; color:#d6d6d6; line-height:1.65;
 }
+/* ทำให้ภาพตกอยู่ชั้นล่างและไม่กินคลิก */
+img[alt="Untitled-6-copy"]{
+  position: relative;   /* กลับมาอยู่ตาม flow ปกติ */
+  z-index: 0;
+  display: block;
+  pointer-events: none; /* ภาพนี้เป็น decoration — ไม่ต้องรับคลิก */
+}
+
+/* ยก hero ให้อยู่สูงกว่าชั้นอื่น */
+#top{ position: relative; z-index: 5; }
+#top .cta-buy{ position: relative; z-index: 6; pointer-events: auto; }
+
+/* กัน pseudo/overlay ที่อาจถูกเพิ่มภายหลัง */
+#top::before, #top::after{ pointer-events: none !important; }
