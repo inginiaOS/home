@@ -1413,6 +1413,57 @@
   /* ---------- 11) FAQ (#faq) — ไม่แตะต้อง ---------- */
 })();
 </script>
+<script>
+/* HERO CTA — hard-bind แบบไม่ไปยุ่งปุ่มอื่น */
+(function () {
+  var OA_BASIC_ID = "@717xokfa";
+  var LINE_ADD_FRIEND_URL = "https://line.me/R/ti/p/" + encodeURIComponent(OA_BASIC_ID);
+
+  function sendOrRedirect(text) {
+    var inLiffNow = false;
+    try {
+      inLiffNow = (window.liff && typeof liff.isInClient === 'function' && liff.isInClient());
+    } catch(e){}
+    if (inLiffNow) {
+      try {
+        return liff.sendMessages([{ type:"text", text }])
+          .then(function(){ alert("ส่งข้อความสำเร็จ ✅ ทีมงานจะติดต่อกลับ"); })
+          .catch(function(){ window.location.href = LINE_ADD_FRIEND_URL; });
+      } catch(e) {
+        window.location.href = LINE_ADD_FRIEND_URL;
+      }
+    } else {
+      window.location.href = LINE_ADD_FRIEND_URL;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    var heroBtn = document.querySelector('#top .cta-buy.subscribeBase');
+    if (!heroBtn) return;
+
+    /* ทำให้ปุ่มนี้อยู่บนสุดและรับคลิกแน่ๆ (กัน overlay แปลกๆ รายหน้า) */
+    heroBtn.style.position = 'relative';
+    heroBtn.style.zIndex = '1001';
+    heroBtn.style.pointerEvents = 'auto';
+
+    /* เคลียร์ handler ซ้ำซ้อนเฉพาะปุ่มนี้ (ถ้ามีถูกผูกมาหลายรอบ) */
+    if (heroBtn.__heroBind) return;
+    heroBtn.__heroBind = true;
+
+    /* ผูกคลิกแบบ capture เพื่อชนะตัวดักอื่น แต่จัดการแค่ปุ่มนี้ตัวเดียว */
+    heroBtn.addEventListener('click', function(e){
+      /* ให้ปุ่มนี้ทำงานของตัวเอง โดยไม่ไปชนกับ guard อื่น */
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      var basePlan = "InginiaOS Starter (8,800฿ / เดือน)";
+      var text = "ฉันสนใจแพ็กเกจหลัก:\n" + basePlan;
+
+      sendOrRedirect(text);
+    }, true); // capture = true
+  });
+})();
+</script>
 
 </body>
 </html>
