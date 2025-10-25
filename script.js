@@ -310,3 +310,28 @@ document.addEventListener("DOMContentLoaded", () => {
   // เผื่อคุณมีสคริปต์แก้ textContent ปุ่มหลังโหลด เสร็จแล้ว re-bind อีกรอบ
   setTimeout(()=>{ bindHeroCTA(); guardOverlays(); }, 0);
 })();
+/* ===== HERO CTA FIX: create new functional button ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  const heroCTA = document.getElementById("heroCTA");
+  if (!heroCTA) return;
+  heroCTA.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const basePlan = "InginiaOS Starter (8,800฿ / เดือน)";
+    const text = "ฉันสนใจแพ็กเกจหลัก:\n" + basePlan;
+
+    try {
+      if (window.liff && typeof liff.isInClient === "function" && liff.isInClient()) {
+        liff.sendMessages([{ type: "text", text }])
+          .then(() => alert("ส่งข้อความสำเร็จ ✅ ทีมงานจะติดต่อกลับ"))
+          .catch(() => {
+            window.location.href = "https://line.me/R/ti/p/" + encodeURIComponent("@717xokfa");
+          });
+      } else {
+        window.location.href = "https://line.me/R/ti/p/" + encodeURIComponent("@717xokfa");
+      }
+    } catch {
+      window.location.href = "https://line.me/R/ti/p/" + encodeURIComponent("@717xokfa");
+    }
+  });
+});
