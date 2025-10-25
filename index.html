@@ -80,7 +80,7 @@
 </div>
 <p class="hook-closer">  </p>
   <p>
-    ถ้ายังใช้สูตรเดิมที่วัดงานด้วย “จำนวนโพสต์/วิดีโอ” คุณจะได้งานเยอะแน่ แต่ไม่แน่ว่าจะได้ยอดขาย
+    ถ้ายังใช้สูตรเดิมที่วัดงานด้วย “จำนวนโพสต์/วิดีโอ” คุณจะได้งานเยอะแน่ แต่ไม่แน่ว่าจะได้ยอดขาย <br>
     <strong>แต่ที่ inginiaOS เราออกแบบ Funnel เฉพาะธุรกิจ</strong> จากข้อมูลจริงของคุณ แล้วค่อยสั่งคอนเทนต์และแอดให้เดินตาม
   </p>
 
@@ -564,62 +564,6 @@
 
   <div class="divider"></div>
 
-<!-- ===== Section – Comparison (Agency vs InginiaOS) ===== -->
-<section id="comparison" data-aos="fade-up">
-  <h2 class="h2-grad">เปรียบเทียบตัวเลือกในตลาด</h2>
-  <p>กดเพื่อดูความต่างระหว่าง เอเจนซี่, โค้ช, AI Tools และ inginiaOS</p>
-  
-  <!-- Toggle Button -->
-  <button id="toggleComparison" class="cta">ดูตารางเปรียบเทียบ</button>
-  
-  <!-- Hidden Table -->
-  <div id="comparisonTable" style="display:none; margin-top:20px;">
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>หัวข้อ</th>
-            <th>เอเจนซี่ทั่วไป</th>
-            <th>โค้ช/คอร์ส</th>
-            <th>AI Tools</th>
-            <th>inginiaOS</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>สิ่งที่คุณจ่าย</td>
-            <td>ค่าทีมใหญ่ (AE, เซลล์, โปรดักชัน)</td>
-            <td>ค่า “ความรู้”</td>
-            <td>ค่าเครื่องมือออโต้</td>
-            <td class="highlight">ค่าความเชี่ยวชาญ + ระบบที่ทำเงิน</td>
-          </tr>
-          <tr>
-            <td>โฟกัส</td>
-            <td>Output (งาน/รีพอร์ต)</td>
-            <td>ทฤษฎี</td>
-            <td>ความเร็วในการผลิตชิ้นงาน</td>
-            <td class="highlight">Outcome (Leads/ROI) จากแผน + Funnel</td>
-          </tr>
-          <tr>
-            <td>วิธีทำ</td>
-            <td>คนเยอะ–ช้า–แพง</td>
-            <td>วันอบรมจบ</td>
-            <td>โพสต์โหลเหมือนกันหมด</td>
-            <td class="highlight">ผู้เชี่ยวชาญกำกับ AI → สร้างพิมพ์เขียวให้ทีมคุณรัน</td>
-          </tr>
-          <tr>
-            <td>ความโปร่งใส</td>
-            <td>ข้อมูลอยู่ที่เอเจนซี่</td>
-            <td>ไม่มีระบบวัดผล</td>
-            <td>ต้องทำ Dashboard เอง</td>
-            <td class="highlight">โปร่งใสใน Notion ของคุณเอง</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="scroll-indicator"></div>
-    </div>
-  </div>
-</section>
 
  <!-- ===== Section – Proof: Mini Case ===== -->
 <section id="proof-cases" data-aos="fade-up">
@@ -1210,6 +1154,204 @@
 })();
 </script>
 <script src="script.js"></script>
-  
+  <script>
+(function () {
+  const $ = sel => document.querySelector(sel);
+
+  /* ---------- 1) HERO ---------- */
+  const heroH1a = document.querySelector('#top .h1-grad');
+  const heroH1b = document.querySelectorAll('#top h1')[1];
+  const heroH2  = document.querySelector('#top h2');
+  const heroP   = document.querySelector('#top p');
+
+  if (heroH1a) heroH1a.textContent = 'ทำไมเอเจนซี่ถึงขายคุณด้วย “จำนวนคอนเทนต์”?';
+  if (heroH1b) heroH1b.textContent = 'ทั้งที่ยอดขายไม่ได้มาจากจำนวนโพสต์ — แต่มาจาก “แผนที่ถูกต้อง + Funnel ที่ตรงจังหวะ”';
+  if (heroH2)  heroH2.innerHTML = 'InginiaOS คือ <em>ทีมกลยุทธ์อัจฉริยะในระบบเดียว</em> ที่ออกแบบแผนเฉพาะธุรกิจของคุณ ตั้งแต่ <strong>Funnel → คอนเทนต์ → แอด</strong> ให้ทุกบาทที่จ่าย “เดินไปในทางเดียวกัน”';
+  if (heroP)   heroP.innerHTML  = 'ไม่ใช่จ่ายให้ความสวย — แต่จ่ายให้ความเข้าใจลูกค้า';
+
+  const heroCTA = document.querySelector('#top .cta-buy');
+  if (heroCTA) heroCTA.textContent = 'เริ่มใช้ InginiaOS — 8,800฿ / เดือน';
+
+  /* ---------- 2) WARNING (#intro) ---------- */
+  const warn = $('.hook-warning-bg');
+  if (warn) warn.innerHTML = '⚠️ <strong>คำเตือน:</strong> ข้อความต่อจากนี้อาจทำให้คุณมองเอเจนซี่ไม่เหมือนเดิมอีกต่อไป';
+  const hookTitle = $('.hook-title');
+  const hookQ = $('.hook-question');
+  const hookSub = $('.hook-sub');
+
+  if (hookTitle) hookTitle.textContent = 'เคยสังเกตไหม?';
+  if (hookQ) hookQ.textContent = 'ทำไมเอเจนซี่ส่วนใหญ่ “คิดราคาแพ็กเกจจากจำนวนคอนเทนต์”?';
+  if (hookSub) hookSub.innerHTML = 'ทั้งที่ยอดขายของคุณควรเริ่มจาก <b>แผน → Funnel → คอนเทนต์ → แอด</b><br>เพราะมัน “ขายง่ายกว่า” — แต่ไม่ได้ “ทำเงินง่ายกว่า”';
+
+  const revealBtn = $('#revealContent');
+  if (revealBtn) revealBtn.textContent = 'เริ่มอ่านต่อ (ดูระบบจริง)';
+
+  /* ---------- 3) PROBLEM → SOLUTION (remap #system-gap) ---------- */
+  const sysH1 = $('#system-gap .h1-grad');
+  const sysH2 = $('#system-gap .h2-grad');
+  if (sysH1) sysH1.textContent = 'ปัญหา → ทางออก (Problem → Solution)';
+  if (sysH2) sysH2.textContent = 'สิ่งที่เอเจนซี่ขายคุณ / สิ่งที่คุณควรได้ / สิ่งที่ InginiaOS ทำ';
+
+  const sysLead = $('#system-gap .lead');
+  if (sysLead) {
+    sysLead.innerHTML = `
+      <p><strong>สิ่งที่เอเจนซี่ขายคุณ</strong> — คอนเทนต์ที่ “ครบชิ้น” แต่ไม่เชื่อมกัน; โพสต์สวย แอดเยอะ แต่ลูกค้าไม่รู้สึกว่าเป็นแบรนด์เดียวกัน</p>
+      <p><strong>สิ่งที่คุณควรได้</strong> — แผนเดียวที่ “เชื่อม Funnel ทั้งหมด” จากข้อมูลธุรกิจจริง ให้ทุกคอนเทนต์มีหน้าที่ใน Funnel:</p>
+      <ul>
+        <li>ดึงดูด</li>
+        <li>คลายข้อสงสัย</li>
+        <li>พิสูจน์</li>
+        <li>ปิดการขาย</li>
+      </ul>
+    `;
+  }
+  const sysSol = $('#system-gap .solution');
+  if (sysSol) {
+    sysSol.innerHTML = `
+      <p><strong>สิ่งที่ InginiaOS ทำ</strong></p>
+      <p>เราออกแบบ <strong>Funnel เฉพาะแบรนด์ของคุณ</strong> ใช้ Multi-AI วิเคราะห์ Journey จริง แล้วให้ Human Strategist ขัดเกลาและแปลงเป็นแผนใน <strong>Notion</strong> — ครบทั้งคอนเทนต์ แอด และงบ พร้อมรันได้ทันที</p>
+    `;
+  }
+  const sysDiff = $('#system-gap .difference');
+  if (sysDiff) {
+    sysDiff.innerHTML = `
+      <p><strong>สรุป</strong> — เราไม่ขาย “จำนวนชิ้นงาน” แต่ขาย “ระบบคิดที่ทำเงินซ้ำได้”.</p>
+    `;
+  }
+  const sysRes = $('#system-gap .result');
+  if (sysRes) {
+    sysRes.innerHTML = `
+      <p><strong>ผลลัพธ์</strong></p>
+      <p>ทีมเห็นภาพเดียวกัน คอนเทนต์ทุกชิ้นทำหน้าที่ใน Funnel เดียวกัน</p>
+    `;
+  }
+
+  /* ---------- 4) WHY IT MATTERS (remap #memory-gap) ---------- */
+  const memH2 = $('#memory-gap .h2-grad');
+  if (memH2) memH2.textContent = 'ทำไมเรื่องนี้สำคัญ (Why it matters)';
+  const memLead = $('#memory-gap .lead');
+  if (memLead) {
+    memLead.innerHTML = `
+      <p><strong>เอเจนซี่ส่วนใหญ่เริ่มที่ “ปลายทาง”</strong> — คือโพสต์; แต่เราเริ่มที่ “ต้นทาง” — ข้อมูลลูกค้า.</p>
+      <p><strong>ลูกค้าคุณไม่เหมือนแบรนด์อื่น</strong>: บางคนเห็นแอดแล้วซื้อเลย, บางคนต้องอ่านรีวิว 3 ครั้ง, บางคนต้องเห็นชื่อคุณบน Feed 5 วันติด.</p>
+      <p><strong>Funnel ที่ดี</strong> คือการเข้าใจ “เส้นทางซื้อจริง” ของลูกค้าแต่ละแบบ — และนี่คือสิ่งที่ระบบเราทำแทนการเดา.</p>
+    `;
+  }
+  const memSol = $('#memory-gap .solution');
+  if (memSol) {
+    memSol.innerHTML = `
+      <p><strong>แนวทาง</strong> — ผูก Insight ลูกค้าเข้ากับ Flow เนื้อหาและงบ เพื่อให้สื่อสารถูกคน ถูกเวลา</p>
+    `;
+  }
+  const memRes = $('#memory-gap .result');
+  if (memRes) {
+    memRes.innerHTML = `
+      <p><strong>ผลลัพธ์</strong> — คอนเทนต์เชื่อมกันเป็น Funnel เดียว, งบตรงจุด, ลูกค้าขยับเร็วขึ้น</p>
+    `;
+  }
+
+  /* ---------- 5) HOW IT WORKS (remap #engine-gap) ---------- */
+  const engH2 = $('#engine-gap .h2-grad');
+  if (engH2) engH2.textContent = 'How it works — ทำงานอย่างไร';
+  const engLead = $('#engine-gap .lead');
+  if (engLead) {
+    engLead.innerHTML = `
+      <p><strong>Thinking Engine</strong> — Multi-AI วิเคราะห์แบรนด์และพฤติกรรมลูกค้าจริง</p>
+      <p><strong>Human Layer</strong> — ผู้เชี่ยวชาญแปลงข้อมูลเป็นภาษาที่ “ขายได้จริง”</p>
+      <p><strong>Delivery</strong> — ส่งแผนทั้งเดือนใน Notion ของคุณ พร้อมรันและปรับได้เอง</p>
+    `;
+  }
+  const engSol = $('#engine-gap .solution');
+  if (engSol) {
+    engSol.innerHTML = `
+      <p><strong>ผลผลิต</strong> — แผน + Funnel + Copy/Hook + Creative Direction + งบ</p>
+    `;
+  }
+  const engRes = $('#engine-gap .result');
+  if (engRes) {
+    engRes.innerHTML = `
+      <p><strong>ผลลัพธ์</strong> — ทีมคุณเดินงานได้ทันที เร็วขึ้น 3–5 เท่า และไม่หลุดโทน</p>
+    `;
+  }
+
+  /* ---------- 6) WHAT YOU GET (#solution) ---------- */
+  const solH2a = document.querySelector('#solution .h2-grad');
+  const solH2b = document.querySelectorAll('#solution h2')[1];
+  const solP   = document.querySelector('#solution p');
+
+  if (solH2a) solH2a.textContent = 'สิ่งที่คุณจะได้ (What you get)';
+  if (solH2b) solH2b.innerHTML = 'เราไม่ขายจำนวนชิ้นงาน — เราส่งมอบ “แผนที่ทำเงิน” ให้ทีมคุณรันต่อ';
+  if (solP)   solP.innerHTML = `
+    <ul style="text-align:left;max-width:860px;margin:0 auto;">
+      <li><strong>Content + Ad Plan ทั้งเดือน</strong> — วัน/เวลา/เป้าหมาย/กลุ่ม/งบ</li>
+      <li><strong>Hook & Copy ผ่าน Human Review</strong> — หลายแนวให้เลือกทดสอบ</li>
+      <li><strong>Creative Direction</strong> — Mood/Tone/Idea/Reference</li>
+      <li><strong>Custom Funnel Journey</strong> — Flow ตรงกับธุรกิจคุณ</li>
+      <li><strong>Data Diagnostic รายเดือน</strong> — แนะนำ “หยุด / อัดงบ / ต่อยอด”</li>
+      <li><strong>โปร่งใสใน Notion</strong> — เห็นทุกชิ้น ทุกเหตุผล ไม่มี “กล่องดำ”</li>
+    </ul>
+  `;
+
+  /* ---------- 7) AGENCY KILLER (#agency-killer) ---------- */
+  const akTitle = $('#ak-title');
+  if (akTitle) akTitle.textContent = '“ทำไมราคาแพ็กเอเจนซี่ถึงผูกกับจำนวนคอนเทนต์?”';
+  const akIntro = $('.ak-intro');
+  if (akIntro) {
+    akIntro.innerHTML = `
+      ยอดขายไม่ได้มาจากจำนวนโพสต์ แต่จาก <strong>แผนที่ถูกต้อง + Funnel ที่ตรงจังหวะ</strong>.<br>
+      <strong>InginiaOS</strong> ตัดค่าใช้จ่ายที่ไม่เกี่ยวกับผลลัพธ์ เหลือแค่ <strong>กลยุทธ์ + ระบบ + ผลวัดได้</strong> — โปร่งใสใน Notion ของคุณ
+    `;
+  }
+  const akQuote = $('.ak-quote');
+  if (akQuote) akQuote.textContent = '“เอเจนซี่ขายปลายทาง (ชิ้นงาน) — เราขายต้นทางที่ทำเงิน (แผน + Funnel)”';
+
+  /* ---------- 8) COMPOUND GROWTH (.features-toggle .compound-growth) ---------- */
+  const cg = document.querySelector('.compound-growth');
+  if (cg) {
+    const h2 = cg.querySelector('.h2-grad');
+    if (h2) h2.textContent = 'ยิ่งใช้ → ยิ่งฉลาด (และยิ่งคุ้ม)';
+    const ps = cg.querySelectorAll('p');
+    if (ps[0]) ps[0].textContent = 'ระบบจะเรียนรู้จากผลจริงของคุณทุกเดือน — ยิงแม่นขึ้น งบถูกลง ROI ทบต้น';
+    const lists = cg.querySelectorAll('ul');
+    if (lists[0]) lists[0].innerHTML = `
+      <li><strong>AI Training จาก Data จริง</strong> — รู้ว่าแบบไหน “ขายได้จริง”</li>
+      <li><strong>Human Review ขัดเกลา</strong> — ป้อน Insight กลับให้ระบบแม่นขึ้น</li>
+      <li><strong>Compound Effect</strong> — เดือนแรกได้ผล, เดือนถัดไปดีขึ้น, เดือนที่สามเริ่มนิ่งและคุ้ม</li>
+    `;
+    const h1s = cg.querySelectorAll('h1');
+    if (h1s[0]) h1s[0].textContent = 'ผลลัพธ์ที่คุณจะเห็น';
+    if (lists[1]) lists[1].innerHTML = `
+      <li>Cost per Lead ลดลงเรื่อย ๆ</li>
+      <li>Content เชื่อมกันเป็น Funnel เดียว</li>
+      <li>Insight ลึกขึ้น — สื่อสารถูกคน ถูกเวลา</li>
+      <li>ROI สะสมเหมือนดอกเบี้ยทบต้น</li>
+    `;
+    if (h1s[1]) h1s[1].innerHTML = '<strong>InginiaOS = ระบบการตลาดที่ฉลาดขึ้นทุกเดือน</strong><br>→ ยิ่งคุณใช้ ระบบยิ่งแม่น แรง และถูกกว่า';
+  }
+
+  /* ---------- 9) PRICING (#pricing) ---------- */
+  const prH2 = $('#pricing .h2-grad');
+  if (prH2) prH2.textContent = 'แพ็กเกจและทางเลือกเสริม';
+  const planTitle = $('#inginiaos .plan-title');
+  const planPrice = $('#inginiaos .plan-price');
+  if (planTitle) planTitle.textContent = 'แพ็กเกจหลัก';
+  if (planPrice) planPrice.innerHTML = '8,800฿ <span class="per">/ เดือน</span>';
+
+  /* ---------- 10) CLOSING (#closing) ---------- */
+  const closeH2 = $('#closing .h2-grad');
+  const closeH1 = $('#closing h1');
+  if (closeH2) closeH2.textContent = 'สรุปสั้น ๆ ก่อนตัดสินใจ';
+  if (closeH1) {
+    closeH1.innerHTML = `
+      เราเชื่อว่าอนาคตของการตลาดจะไม่ได้แข่งกันที่ทีมใหญ่หรือเครื่องมือเยอะ<br>
+      แต่แข่งกันที่ <strong>ระบบคิดที่เข้าใจลูกค้าจริง ๆ</strong><br><br>
+      และ InginiaOS คือระบบนั้น — ทีมกลยุทธ์อัจฉริยะที่ออกแบบ Funnel เฉพาะธุรกิจของคุณ และฉลาดขึ้นทุกเดือน
+    `;
+  }
+
+  /* ---------- 11) FAQ (#faq) — ไม่แตะต้อง ---------- */
+})();
+</script>
+
 </body>
 </html>
