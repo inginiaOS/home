@@ -1178,3 +1178,28 @@ body { overflow-x: visible; }      /* ปล่อย body ไว้ปกติ
   height: auto;
   display: block;
 }
+/* --- Fix เฉพาะ hero bubble: บังคับชิดซ้าย --- */
+header#top .hero-bubbles { 
+  justify-content: flex-start !important;
+  align-items: stretch;
+}
+
+header#top .hero-bubble {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start !important; /* ชิดซ้าย */
+  gap: .75rem;
+  min-width: 0;
+}
+
+header#top .hero-emoji { 
+  flex: 0 0 auto;            /* ไอคอนไม่ดันข้อความ */
+}
+
+header#top .hero-bubble-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left !important; 
+  margin-left: 0 !important;  /* กันกฎ global ที่อาจตั้ง auto */
+}
