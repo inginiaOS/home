@@ -1138,24 +1138,23 @@ body { overflow-x: visible; }      /* ปล่อย body ไว้ปกติ
   #solution .wyg-title{ font-size:1.05rem; }
   #solution .wyg-desc{ font-size: .98rem; }
 }
-/* รักษา scale บนมือถือ – ไม่ให้ iOS/Android ซูมอัตโนมัติ */
+/* ป้องกันการซูมและให้หน้าเว็บฟิตพอดีกับทุกหน้าจอ */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ป้องกัน iPhone/iPad ปรับขนาดอัตโนมัติ */
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
-/* ไม่เปลี่ยน layout ใด ๆ มีแค่ปิดการเลื่อนด้านข้าง */
-html, body {
-  overflow-x: hidden;
-}
-
-/* กันรูป/วิดีโอดันเลย์เอาต์จนล้นขอบจอ */
-img, video, canvas, svg {
+/* ปรับรูปภาพและวิดีโอให้ไม่ล้นขอบจอ */
+img, video {
   max-width: 100%;
   height: auto;
-}
-
-/* กัน iOS auto-zoom ตอนโฟกัสฟอร์ม โดยไม่แตะองค์ประกอบอื่น */
-input, select, textarea {
-  font-size: 16px;
+  display: block;
 }
