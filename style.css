@@ -1178,4 +1178,51 @@ body { overflow-x: visible; }      /* ปล่อย body ไว้ปกติ
   height: auto;
   display: block;
 }
+/* ------------------------------
+   ✅ FINAL PATCH — เฉพาะปัญหาข้อความกองขวาใน hero
+   ------------------------------ */
+
+/* 1. ยกเลิกการตั้ง overflow-x: clip บน root ทั้งหมด */
+html, body {
+  overflow-x: visible !important;
+}
+
+/* 2. จัดเรียงภายใน hero ใหม่ให้ชิดซ้ายตามปกติ */
+.hero-bubbles,
+.hero-bubble {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start; /* ✅ ชิดซ้าย */
+  gap: 0.75rem;
+  text-align: left;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* 3. ให้ข้อความภายในบับเบิ้ลหดและตัดบรรทัดได้ */
+.hero-bubble-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;             /* ✅ ชิดซ้ายแน่นอน */
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* 4. รูป/ไอคอนภายใน hero ไม่ให้ดันข้อความหลุด */
+.hero-emoji, .hero-bubble img {
+  flex-shrink: 0;
+  display: block;
+  max-width: 24px;
+  height: auto;
+}
+
+/* (Optional) ปรับ container ของ hero ให้เต็มความกว้างปกติ */
+header#top {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  overflow-x: visible; /* ✅ ไม่ปิด layout อื่น */
+}
 
