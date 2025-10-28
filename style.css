@@ -1138,3 +1138,27 @@ body { overflow-x: visible; }      /* ปล่อย body ไว้ปกติ
   #solution .wyg-title{ font-size:1.05rem; }
   #solution .wyg-desc{ font-size: .98rem; }
 }
+/* --- แพตช์แก้การล้นแบบเฉพาะจุด --- */
+
+/* ปิดการล้นของ root ทั้งหมด */
+html, body {
+  overflow-x: clip; /* ปลอดภัยกว่า hidden เพราะไม่ตัด shadow */
+}
+
+/* ถ้า nav เป็นตัวต้นเหตุ: บีบขนาดไม่เกิน viewport */
+nav {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* ถ้า section ที่มี AOS ขยับออกข้าง ให้ clip เฉพาะ section นั้น */
+section.aos-init, section.aos-animate {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+/* (optional) บางกรณีใช้ width:100vw อาจทำให้เกินจริง ให้ใช้ 100% แทน */
+[class*="full-width"], [class*="hero"], [class*="banner"] {
+  width: 100%;
+  max-width: 100%;
+}
