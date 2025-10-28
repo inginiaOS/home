@@ -1138,27 +1138,44 @@ body { overflow-x: visible; }      /* ปล่อย body ไว้ปกติ
   #solution .wyg-title{ font-size:1.05rem; }
   #solution .wyg-desc{ font-size: .98rem; }
 }
-/* --- แพตช์แก้การล้นแบบเฉพาะจุด --- */
-
-/* ปิดการล้นของ root ทั้งหมด */
-html, body {
-  overflow-x: clip; /* ปลอดภัยกว่า hidden เพราะไม่ตัด shadow */
-}
-
-/* ถ้า nav เป็นตัวต้นเหตุ: บีบขนาดไม่เกิน viewport */
-nav {
+/* --- แก้เฉพาะจุดที่เพี้ยนเท่านั้น --- */
+.overflow-fix {
+  overflow-x: hidden;   /* กันการเลื่อนข้างเฉพาะจุด */
+  width: 100%;
   max-width: 100%;
-  overflow-x: clip;
+  position: relative;
 }
 
-/* ถ้า section ที่มี AOS ขยับออกข้าง ให้ clip เฉพาะ section นั้น */
-section.aos-init, section.aos-animate {
-  overflow-x: clip;
-  max-width: 100%;
+/* ถ้าด้านในมี element ที่ตั้ง width:100vw อยู่ ให้บังคับเป็น % */
+.overflow-fix [style*="100vw"],
+.overflow-fix .full-bleed {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
-/* (optional) บางกรณีใช้ width:100vw อาจทำให้เกินจริง ให้ใช้ 100% แทน */
-[class*="full-width"], [class*="hero"], [class*="banner"] {
+/* กรณีเป็นแถวแบบไอคอน + ข้อความ (flex row) ให้คอลัมน์ข้อความหดได้ */
+.overflow-fix .row > *,
+.overflow-fix [class*="row"] > *,
+.overflow-fix .flex > * {
+  min-width: 0;         /* สำคัญ: กันข้อความดันจนกองซ้าย/ขวา */
+}
+
+/* เผื่อการ์ด/คอนเทนเนอร์มี padding เยอะ ให้คิด padding ในความกว้างด้วย */
+.overflow-fix .container,
+.overflow-fix .card,
+.overflow-fix .wrapper {
+  box-sizing: border-box;
   width: 100%;
   max-width: 100%;
 }
+
+/* สื่อภายในไม่ให้ดันกล่องล้น */
+.overflow-fix img,
+.overflow-fix video,
+.overflow-fix svg,
+.overflow-fix canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
