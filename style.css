@@ -1138,67 +1138,24 @@ body { overflow-x: visible; }      /* ปล่อย body ไว้ปกติ
   #solution .wyg-title{ font-size:1.05rem; }
   #solution .wyg-desc{ font-size: .98rem; }
 }
-/* ----- Global Mobile Fit (no zoom, no sideways scroll) ----- */
+/* รักษา scale บนมือถือ – ไม่ให้ iOS/Android ซูมอัตโนมัติ */
 html {
-  /* กัน iOS/Android ปรับขนาดตัวอักษรจนเหมือนซูม */
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
-
-  /* ใช้ safe-area ของจอมีรอยบาก */
-  height: 100%;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-
+/* ไม่เปลี่ยน layout ใด ๆ มีแค่ปิดการเลื่อนด้านข้าง */
 html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  max-width: 100vw;   /* กันปลิ้นออกนอกจอ */
-  overflow-x: hidden; /* ปิดการเลื่อนด้านข้าง */
-  height: 100%;
+  overflow-x: hidden;
 }
 
-/* ภาพ/วิดีโอให้ยืดหยุ่นตามจอ ไม่ดันเลย์เอาต์ปลิ้น */
+/* กันรูป/วิดีโอดันเลย์เอาต์จนล้นขอบจอ */
 img, video, canvas, svg {
-  display: block;
   max-width: 100%;
   height: auto;
 }
 
-/* บล็อกใหญ่ๆ ให้ไม่เกิน viewport */
-section, header, footer, main, .container, .wrapper {
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* ฮีโร่เต็มจอพร้อมรองรับจอมีรอยบาก */
-.hero {
-  min-height: 100svh; /* ใช้ svh แก้ปัญหาแถบ URL บนมือถือ */
-  padding:
-    calc(env(safe-area-inset-top, 0px))
-    calc(env(safe-area-inset-right, 0px))
-    calc(env(safe-area-inset-bottom, 0px))
-    calc(env(safe-area-inset-left, 0px));
-}
-
-/* ป้องกัน element ที่ถูก transform ทำให้กว้างเกินจอ */
-[style*="transform"], .transformed {
-  will-change: transform;
-  max-width: 100%;
-}
-
-/* ฟอร์ม: กัน iOS auto-zoom ตอนโฟกัส */
+/* กัน iOS auto-zoom ตอนโฟกัสฟอร์ม โดยไม่แตะองค์ประกอบอื่น */
 input, select, textarea {
-  font-size: 16px !important;
-}
-
-/* ปรับคำ/บรรทัดให้ไม่หลุดขอบ */
-h1, h2, h3, p {
-  word-wrap: break-word;
-  overflow-wrap: anywhere;
-  margin: 0;
+  font-size: 16px;
 }
