@@ -1203,11 +1203,5 @@ header#top .hero-bubble-text {
   text-align: left !important; 
   margin-left: 0 !important;  /* กันกฎ global ที่อาจตั้ง auto */
 }
-.hero-img {
-  width: 80%;         /* ปรับให้เล็กลงจากขนาด container */
-  max-width: 500px;   /* ไม่เกิน 500px */
-  height: auto;       /* คงสัดส่วนภาพไว้ */
-  display: block;     /* จัดให้อยู่เป็นบล็อก */
-  margin: 0 auto;     /* จัดให้อยู่ตรงกลาง */
-}
+
 
